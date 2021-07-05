@@ -3,7 +3,6 @@
 <head>
     @include('Links.head')
     <title >تسجيل مسعف جديد</title>
-{{--Git Hub Test--}}
 </head>
 <body>
 <div class="dash">
