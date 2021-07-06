@@ -21,7 +21,6 @@ class ParamedicsController extends Controller
 
     public function create()
     {
-        //
     }
 
 
@@ -71,48 +70,61 @@ class ParamedicsController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Paramedics  $paramedics
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Paramedics $paramedics)
+
+    public function show($id=null)
     {
-        //
+        if ($id)
+        {
+            $paramedics=Paramedics::find($id);
+            return $paramedics;
+        }
+        else
+        {
+            $paramedics=Paramedics::all();
+            return $paramedics;
+        }
+
+
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Paramedics  $paramedics
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit(Paramedics $paramedics)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Paramedics  $paramedics
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Paramedics $paramedics)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Paramedics  $paramedics
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy(Paramedics $paramedics)
     {
         //
     }
+
+    public function checkLogin(Request $request)
+    {
+        $userInfo=Paramedics::where('username','=',$request->username)->first();
+
+        if(!$userInfo)
+        {
+            return  false;
+        }
+        else
+        {
+            if(Hash::check($request->password,$userInfo->password))
+            {
+               // $request->session()->put('LoggedUser',$userInfo->id);
+                return true;
+
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
+
 }
