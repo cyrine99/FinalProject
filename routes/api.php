@@ -17,4 +17,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::resource('paramedicsAPI',ParamedicsControllerAPI::class);
 Route::post('checkLoginAPI','ParamedicsControllerAPI@checkLogin');
 
+Route::resource('patientAPI',PatientController::class);
+
+
 
