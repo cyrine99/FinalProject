@@ -30,17 +30,12 @@ class PatientController extends Controller
                 'lastname'=>'required',
                 'birthDate'=>'required',
                 'gender'=>'required',
-                'phone'=>'required',
+                'phone'=>'required|unique:patients',
                 'length'=>'required',
                 'weight'=>'required',
                 'deaf'=>'required',
             ]
         );
-
-//        $patient = new Patient();
-//        $patient=$request;
-//
-//       $data=$patient->save();
 
         $data=Patient::create($request->all());
 
