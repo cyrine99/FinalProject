@@ -73,17 +73,6 @@ class ParamedicsController extends Controller
 
     public function show($id=null)
     {
-        if ($id)
-        {
-            $paramedics=Paramedics::find($id);
-            return $paramedics;
-        }
-        else
-        {
-            $paramedics=Paramedics::all();
-            return $paramedics;
-        }
-
 
     }
 
@@ -104,27 +93,6 @@ class ParamedicsController extends Controller
         //
     }
 
-    public function checkLogin(Request $request)
-    {
-        $userInfo=Paramedics::where('username','=',$request->username)->first();
 
-        if(!$userInfo)
-        {
-            return  false;
-        }
-        else
-        {
-            if(Hash::check($request->password,$userInfo->password))
-            {
-               // $request->session()->put('LoggedUser',$userInfo->id);
-                return true;
-
-            }
-            else
-            {
-                return false;
-            }
-        }
-    }
 
 }
