@@ -20,4 +20,10 @@ class Patient extends Model
         'weight',
         'deaf',
     ];
+
+    //دالة لتحديد العلاقة بين المريض و طلب التصريح
+    public function exitPermissionRequest()
+    {
+        return $this->hasMany(ExitPermissionRequert::class);
+    }
 }

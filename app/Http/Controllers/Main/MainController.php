@@ -12,6 +12,7 @@ use App\Models\AdminModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use MongoDB\Driver\Session;
+use Nexmo\Laravel\Facade\Nexmo;
 
 
 class MainController extends Controller
@@ -28,6 +29,11 @@ class MainController extends Controller
 
     public function checkLogin(Request $request)
     {
+//        Nexmo::message()->send([
+//            'to'=>'218916525287',
+//            'from'=>'Wee',
+//            'text'=>'hi nana'
+//        ]);
       $request->validate(
           [
               'employeeId'=>'required|min:7',
