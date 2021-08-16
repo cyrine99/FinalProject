@@ -19,11 +19,18 @@ class Patient extends Model
         'length',
         'weight',
         'deaf',
+        'token',
     ];
 
     //دالة لتحديد العلاقة بين المريض و طلب التصريح
     public function exitPermissionRequest()
     {
         return $this->hasMany(ExitPermissionRequert::class);
+    }
+
+    //دالة لتحديد العلاقة بين المريض و لاجهزة المسجل فيها حسابه
+    public function loginPatientTokens ()
+    {
+        return $this->hasMany(LoginPatient::class);
     }
 }

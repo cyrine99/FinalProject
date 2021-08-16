@@ -23,6 +23,7 @@ class CreatePatientsTable extends Migration
             $table->string('length');
             $table->string('weight');
             $table->integer('deaf');
+            $table->string('token');
             $table->timestamps();
         });
     }

@@ -29,11 +29,27 @@ class MainController extends Controller
 
     public function checkLogin(Request $request)
     {
+//        $basic  = new \Vonage\Client\Credentials\Basic("78c856d3", "PaM0SlMzcxWw7R6W");
+//        $client = new \Vonage\Client($basic);
+//
+//        $response = $client->sms()->send(
+//            new \Vonage\SMS\Message\SMS("218913204801", 'BRAND_NAME', 'A text message sent using the Nexmo SMS API')
+//        );
+//
+//        $message = $response->current();
+//
+//        if ($message->getStatus() == 0) {
+//            echo "The message was sent successfully\n";
+//        } else {
+//            echo "The message failed with status: " . $message->getStatus() . "\n";
+//        }
+
 //        Nexmo::message()->send([
 //            'to'=>'218916525287',
 //            'from'=>'Wee',
 //            'text'=>'hi nana'
 //        ]);
+
       $request->validate(
           [
               'employeeId'=>'required|min:7',

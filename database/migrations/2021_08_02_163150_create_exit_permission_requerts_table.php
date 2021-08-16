@@ -15,7 +15,7 @@ class CreateExitPermissionRequertsTable extends Migration
     {
         Schema::create('exit_permission_requerts', function (Blueprint $table) {
             $table->id();
-            $table->integer('patient_id');
+            $table->bigInteger('patient_id');
             $table->string('state_details');
             $table->string('driver_name');
             $table->string('driver_id');
@@ -29,7 +29,7 @@ class CreateExitPermissionRequertsTable extends Migration
         });
     }
 
-    /**
+    /**$ php artisan migrate:refresh
      * Reverse the migrations.
      *
      * @return void

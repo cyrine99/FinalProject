@@ -37,6 +37,20 @@ Route::get('exitPermissionForOnePatient/{id}/patients','ExitPermissionRequestCon
 Route::resource('exitPermissionRequestAPI',ExitPermissionRequestController::class);
 
 
+//API login for Patient checkLoginAlmuseif
+Route::post('checkLoginAlmuseifAPI','PatientController@checkLoginAlmuseif');
+
+
+//API Save Tokens For Patient
+Route::resource('loginPatientTokensAPI',LoginPatientController::class);
+
+
+//API for return Tokens for one patient
+//Route::get('loginTokensForOnePatientAPI/{id}/patientsLogin','LoginPatientController@loginTokensForOnePatient');
+
+
+
+
 
 
 

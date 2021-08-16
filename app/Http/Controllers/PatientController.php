@@ -74,4 +74,18 @@ class PatientController extends Controller
     {
         //
     }
+
+ public function checkLoginAlmuseif (Request $request)
+    {
+        $userInfo=Patient::where('phone','=',$request->phone)->first();
+
+        if(!$userInfo)
+        {
+             return response()->json('Error',400);
+        }
+        else
+        {
+                return response()->json($userInfo,200);
+        }
+    }
 }

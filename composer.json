@@ -13,7 +13,8 @@
         "laravel/tinker": "^2.5",
         "nexmo/client": "@beta",
         "nexmo/laravel": "^2.4",
-        "realrashid/sweet-alert": "^4.0"
+        "realrashid/sweet-alert": "^4.0",
+        "vonage/client": "^2.4"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
