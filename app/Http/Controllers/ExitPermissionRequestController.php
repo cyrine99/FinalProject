@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AdminModel;
 use App\Models\ExitPermissionRequert;
 use Illuminate\Http\Request;
+
+
 
 use  Illuminate\Routing\Controller;
 
@@ -23,8 +26,10 @@ class ExitPermissionRequestController extends Controller
 
     public function index()
     {
-        //
+
     }
+
+
 
 
     public function create()
@@ -61,9 +66,15 @@ class ExitPermissionRequestController extends Controller
     }
 
 
-    public function show(ExitPermissionRequert $exitPermissionRequert)
+    public function show( $id,$state)
     {
-        //
+        $data['id']=$id;
+        $data['count'] = ExitPermissionRequert::where('request_state','=','0')->count();
+        $data['ExitPermissionRequests']=ExitPermissionRequert::all();
+        $data['LoggedInfo']=AdminModel::where('id','=',session('LoggedUser'))->first();
+        $data['AllUsers']=AdminModel::all();
+        return view('admin.include.exitPermission',$data);
+
     }
 
 

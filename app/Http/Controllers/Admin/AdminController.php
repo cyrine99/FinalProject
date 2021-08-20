@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 
 
+use App\Models\ExitPermissionRequert;
 use Illuminate\Http\Request;
 use  Illuminate\Routing\Controller;
 
@@ -22,12 +23,15 @@ class AdminController extends Controller
 
     public function dashboard()
     {
+        $data['count'] = ExitPermissionRequert::where('request_state','=','0')->count();
+        $data['ExitPermissionRequests']=ExitPermissionRequert::all();
         $data['LoggedInfo']=AdminModel::where('id','=',session('LoggedUser'))->first();
-
         return view('admin.include.dashboard',$data);
     }
     public function register()
     {
+        $data['count'] = ExitPermissionRequert::where('request_state','=','0')->count();
+        $data['ExitPermissionRequests']=ExitPermissionRequert::all();
         $data['LoggedInfo']=AdminModel::where('id','=',session('LoggedUser'))->first();
         return view('admin.include.registerAdd',$data);
     }
@@ -35,6 +39,8 @@ class AdminController extends Controller
 
     public function registerUpdateAndDelete()
     {
+        $data['count'] = ExitPermissionRequert::where('request_state','=','0')->count();
+        $data['ExitPermissionRequests']=ExitPermissionRequert::all();
         $data['LoggedInfo']=AdminModel::where('id','=',session('LoggedUser'))->first();
         $data['AllUsers']=AdminModel::all();
         return view('admin.include.registerUpdateAndDelete',$data);
@@ -43,6 +49,8 @@ class AdminController extends Controller
 
     public function addParamedicsUi()
     {
+        $data['count'] = ExitPermissionRequert::where('request_state','=','0')->count();
+        $data['ExitPermissionRequests']=ExitPermissionRequert::all();
         $data['LoggedInfo']=AdminModel::where('id','=',session('LoggedUser'))->first();
         return view('admin.include.addParamedicsUi',$data);
     }

@@ -16,6 +16,8 @@ Route::namespace('Main')->group(function ()
 
 });
 
+
+
 Route::namespace('Admin')->group(function ()
 {
 
@@ -26,6 +28,8 @@ Route::namespace('Admin')->group(function ()
     //ParamedicsUi
     Route::resource('paramedics',ParamedicsController::class);
 
+
+
     //Admin URL
     Route::middleware('AuthCheck')->group(function ()
     {
@@ -34,9 +38,18 @@ Route::namespace('Admin')->group(function ()
         Route::get('addParamedicsUi','AdminController@addParamedicsUi')->name('addParamedicsUi');
         Route::get('registerUpdateAndDelete','AdminController@registerUpdateAndDelete')->name('registerUpdateAndDelete');
         Route::get('addParamedicsUi','AdminController@addParamedicsUi')->name('addParamedicsUi');
+
     });
 
 });
+
+
+Route::middleware('AuthCheck')->group(function () {
+    Route::get('exitPermission', 'ExitPermissionRequestController@index')->name('exitPermission');
+    Route::get('exitPermissionShow/{id}/{state}', 'ExitPermissionRequestController@show')->name('exitPermissionShow');
+});
+
+
 
 Route::get('sendNoty', function () {
 
