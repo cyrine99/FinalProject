@@ -29,7 +29,7 @@
                                     <i class="fas fa-user"></i>
                                 </div>
                                 <div  class="stats-data">
-                                    <div  class="stats-number">114</div>
+                                    <div  id="AllRequsets" class="stats-number"></div>
 
                                 </div>
                             </div>
@@ -43,7 +43,7 @@
                                     <i class="fas fa-check-circle"></i>
                                 </div>
                                 <div class="stats-data">
-                                    <div class="stats-number">96</div>
+                                    <div id="RequsetsAccept" class="stats-number"></div>
                                 </div>
                             </div>
                         </div>
@@ -59,7 +59,7 @@
                                     <i class="fas fa-pause"></i>
                                 </div>
                                 <div class="stats-data">
-                                    <div class="stats-number">8</div>
+                                    <div id="unrederRequest" class="stats-number"></div>
                                 </div>
                             </div>
                         </div>
@@ -72,7 +72,7 @@
                                     <i class="fas fa-frown"></i>
                                 </div>
                                 <div class="stats-data">
-                                    <div class="stats-number">10</div>
+                                    <div id="RequsetsNotAccept" class="stats-number"></div>
                                 </div>
                             </div>
                         </div>
@@ -85,6 +85,7 @@
 
 
 @include('Links.body_js')
+
 
 </body>
 

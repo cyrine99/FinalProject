@@ -47,6 +47,21 @@ Route::namespace('Admin')->group(function ()
 Route::middleware('AuthCheck')->group(function () {
     Route::get('exitPermission', 'ExitPermissionRequestController@index')->name('exitPermission');
     Route::get('exitPermissionShow/{id}/{state}', 'ExitPermissionRequestController@show')->name('exitPermissionShow');
+
+    Route::get('notificationCount', 'ExitPermissionRequestController@notificationCount')->name('notificationCount');
+    Route::get('RequsetsAccept', 'ExitPermissionRequestController@RequsetsAccept')->name('RequsetsAccept');
+    Route::get('RequsetsNotAccept', 'ExitPermissionRequestController@RequsetsNotAccept')->name('RequsetsNotAccept');
+    Route::get('AllRequsets', 'ExitPermissionRequestController@AllRequsets')->name('AllRequsets');
+    Route::get('AllRequestBody', 'ExitPermissionRequestController@AllRequestBody')->name('AllRequestBody');
+    Route::get('CancelRequest/{id}/{id_patient}', 'ExitPermissionRequestController@CancelRequest')->name('CancelRequest');
+    Route::get('OkRequest/{id}/{id_patient}', 'ExitPermissionRequestController@OkRequest')->name('OkRequest');
+
+
+
+
+
+
+
 });
 
 

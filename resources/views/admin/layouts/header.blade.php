@@ -1,3 +1,4 @@
+<meta name="csrf-token" content="{{ csrf_token() }}" />
 <header class="dash-toolbar">
     <a href="#!" class="menu-toggle">
         <i class="fas fa-bars"></i>
@@ -12,16 +13,16 @@
 
 
 
-        <a href="{{route('exitPermission')}}"  data-toggle="modal" data-target="#exampleModal" class="tools-item">
+        <a id="notify-comet"  data-toggle="modal" data-target="#exampleModal" class="tools-item">
             <i class="fas fa-bell"></i>
-            @if($count > 0)
-            <i class="tools-item-count">{{$count}}</i>
-            @endif
+            <i id="not-count"  class="tools-item-count"></i>
         </a>
 
 
 
 
+
+        @include('Links.body_js')
 
         <div class="dropdown tools-item">
             <a href="#" class="" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -114,32 +115,7 @@
                 <link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,900" rel="stylesheet">
 
                 <div class="container">
-                    <div class="row">
-
-
-
-                        @foreach($ExitPermissionRequests as $value)
-
-                            <a class="col-md-12" href=" {{ url('exitPermissionShow/'.$value->id .'/'.$value->request_state) }}">
-                            <div  class="col-md-12">
-
-                                @if($value->request_state==0)
-                                <div style="background-color: #e7e7eb" class="card card-1">
-                                @else
-                                <div style="background-color: #ffffff" class="card card-1">
-                                @endif
-                                    <h3 style="text-align: center">طلب تصريح</h3>
-                                    <p style="margin-right: 20px">
-                                        {{$value->state_details}}
-                                                                            </p>
-                                </div>
-                                <br>
-                            </div>
-                            </a>
-                        @endforeach
-
-
-
+                    <div id="modelRequests" class="row">
 
                     </div>
                 </div>
@@ -152,3 +128,174 @@
         </div>
     </div>
 </div>
+@include('Links.body_js')
+
+<script>
+    jQuery(document).ready(function($){
+
+        $('#notify-comet').on('click', function()
+        {
+            $.ajax({
+                url: 'http://127.0.0.1:8000/AllRequestBody',
+                type: 'GET',
+                dataType: 'json',
+                success: function ( data) {
+                    $('#modelRequests').empty();
+                    $.each(data, function(key, value)
+                        {
+                            var id=value.id;
+                            var request_state=value.request_state;
+
+                            var urlAction='http://127.0.0.1:8000/exitPermissionShow/'+id+'/'+request_state;
+
+                            if(request_state==0)
+                            {
+                                $('#modelRequests').append('' +
+                                    ' <a  class="col-md-12" href=" '+urlAction+'">'+
+                                    '<div   class="col-md-12">'+
+                                    '<div style="background-color: #eeeef1"  class="card card-1">'+
+                                    '<h4 style="text-align: center">طلب تصريح </h4>'+
+                                    '<p style="margin-right: 20px">'+
+                                    value.state_details
+                                    + '</p>'+
+                                    '<span style="margin-right: 20px;color: red">طلب تصريح لم يتم الرد عليه</span>'+
+                                    '</div>'+
+                                    '<br>'+
+                                    '</div>'+
+                                    '</a>'
+                                );
+                            }
+                            else
+                            {
+                                $('#modelRequests').append('' +
+                                    ' <a class="col-md-12" href=" '+urlAction+'">'+
+                                    '<div  class="col-md-12">'+
+                                    '<div  class="card card-1">'+
+                                    '<h4 style="text-align: center">طلب تصريح</h4>'+
+                                    '<p style="margin-right: 20px">'+
+                                    value.state_details
+                                    + '</p>'+
+                                    '</div>'+
+                                    '<br>'+
+                                    '</div>'+
+                                    '</a>'
+                                );
+                            }
+
+
+                        });
+
+                },
+                error: function ( data ) {
+                    alert(data);
+                }
+            });
+        });
+
+
+
+
+        function load_unseen_notification()
+        {
+            $.ajax({
+                url: 'http://127.0.0.1:8000/notificationCount',
+                type: 'GET',
+                dataType: 'json',
+                success: function ( data) {
+
+                    $('#not-count').html(data);
+
+                },
+                error: function ( data ) {
+                    alert(data);
+                }
+            });
+
+        }
+
+        function RequestWait()
+        {
+            $.ajax({
+                url: 'http://127.0.0.1:8000/notificationCount',
+                type: 'GET',
+                dataType: 'json',
+                success: function ( data) {
+                    $('#unrederRequest').html(data);
+                },
+                error: function ( data ) {
+                    alert(data);
+                }
+            });
+
+        }
+        function RequsetsAccept()
+        {
+            $.ajax({
+                url: 'http://127.0.0.1:8000/RequsetsAccept',
+                type: 'GET',
+                dataType: 'json',
+                success: function ( data) {
+
+                        $('#RequsetsAccept').html(data);
+
+
+
+                },
+                error: function ( data ) {
+                    alert(data);
+                }
+            });
+
+        }
+        function RequsetsNotAccept()
+        {
+            $.ajax({
+                url: 'http://127.0.0.1:8000/RequsetsNotAccept',
+                type: 'GET',
+                dataType: 'json',
+                success: function ( data) {
+
+                    $('#RequsetsNotAccept').html(data);
+
+
+
+                },
+                error: function ( data ) {
+                    alert(data);
+                }
+            });
+
+        }
+
+        function AllRequsets()
+        {
+            $.ajax({
+                url: 'http://127.0.0.1:8000/AllRequsets',
+                type: 'GET',
+                dataType: 'json',
+                success: function ( data) {
+
+                    $('#AllRequsets').html(data);
+
+
+
+                },
+                error: function ( data ) {
+                    alert(data);
+                }
+            });
+
+        }
+
+        setInterval(function(){
+            load_unseen_notification();
+            RequsetsAccept();
+            RequsetsNotAccept();
+            AllRequsets();
+            RequestWait();
+        }, 3000);
+    });
+
+</script>
+
+
