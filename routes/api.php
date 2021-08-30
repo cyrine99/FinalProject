@@ -30,7 +30,7 @@ Route::resource('patientAPI',PatientController::class);
 
 
 //Api return permission for one patient
-Route::get('exitPermissionForOnePatient/{id}/patients','ExitPermissionRequestController@exitPermissionForOnePatient');
+Route::get('exitPermissionForOnePatient/{id}','ExitPermissionRequestController@exitPermissionForOnePatient');
 
 
 //Api Insert Permission

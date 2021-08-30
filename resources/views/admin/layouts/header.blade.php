@@ -133,10 +133,12 @@
 <script>
     jQuery(document).ready(function($){
 
+	var localUrl='http://192.168.1.3:8080';
+
         $('#notify-comet').on('click', function()
         {
             $.ajax({
-                url: 'http://127.0.0.1:8000/AllRequestBody',
+                url: localUrl+'/AllRequestBody',
                 type: 'GET',
                 dataType: 'json',
                 success: function ( data) {
@@ -146,7 +148,7 @@
                             var id=value.id;
                             var request_state=value.request_state;
 
-                            var urlAction='http://127.0.0.1:8000/exitPermissionShow/'+id+'/'+request_state;
+                            var urlAction= localUrl+'/exitPermissionShow/'+id+'/'+request_state;
 
                             if(request_state==0)
                             {
@@ -198,7 +200,7 @@
         function load_unseen_notification()
         {
             $.ajax({
-                url: 'http://127.0.0.1:8000/notificationCount',
+                url:  localUrl+'/notificationCount',
                 type: 'GET',
                 dataType: 'json',
                 success: function ( data) {
@@ -216,7 +218,7 @@
         function RequestWait()
         {
             $.ajax({
-                url: 'http://127.0.0.1:8000/notificationCount',
+                url:  localUrl+'/notificationCount',
                 type: 'GET',
                 dataType: 'json',
                 success: function ( data) {
@@ -231,7 +233,7 @@
         function RequsetsAccept()
         {
             $.ajax({
-                url: 'http://127.0.0.1:8000/RequsetsAccept',
+                url:  localUrl+'/RequsetsAccept',
                 type: 'GET',
                 dataType: 'json',
                 success: function ( data) {
@@ -250,7 +252,7 @@
         function RequsetsNotAccept()
         {
             $.ajax({
-                url: 'http://127.0.0.1:8000/RequsetsNotAccept',
+                url:  localUrl+'/RequsetsNotAccept',
                 type: 'GET',
                 dataType: 'json',
                 success: function ( data) {
@@ -270,7 +272,7 @@
         function AllRequsets()
         {
             $.ajax({
-                url: 'http://127.0.0.1:8000/AllRequsets',
+                url:  localUrl+'/AllRequsets',
                 type: 'GET',
                 dataType: 'json',
                 success: function ( data) {
