@@ -51,6 +51,27 @@ Route::resource('loginPatientTokensAPI',LoginPatientController::class);
 
 
 
+/**************************/
+
+//API For insert Balag
+Route::resource('BalagAdd',BalagController::class);
+
+
+//API For Show  Balag For User
+Route::get('showForUser/{id}/{state}','BalagController@showForUser')->name('showForUser');
+
+
+//API For Show All Balag
+Route::get('showAll','BalagController@showAll')->name('showAll');
+
+
+
+
+
+
+
+
+
 
 
 
