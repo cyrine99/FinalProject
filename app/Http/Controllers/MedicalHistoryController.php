@@ -34,9 +34,19 @@ class MedicalHistoryController extends Controller
     }
 
 
-    public function show(MedicalHistory $medicalHistory)
+    public function MedicalHistoryShowForUser($id)
     {
-        //
+        $data = MedicalHistory::where('id_patient', $id)->get();
+
+        if($data)
+        {
+            return response()->json($data,200);
+        }
+        else
+        {
+            return response()->json('Error',400);
+
+        }
     }
 
 
