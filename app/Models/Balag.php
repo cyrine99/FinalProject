@@ -9,13 +9,18 @@ class Balag extends Model
 {
     use HasFactory;
     protected $fillable=['id',
-                        'id_patient',
-                        'location',
-                        'phone',
-                        'for_you',
-                        'balag_type',
-                        'location_description',
-                        'number_of_persons',
-                        'balag_state'];
+        'id_patient',
+        'location_latitude',
+        'location_longitude',
+        'phone',
+        'for_you',
+        'balag_type',
+        'location_description',
+        'number_of_persons',
+        'balag_state',
+        'name',
+        'age',
+        'notes',
+        'gender'];
 
 }

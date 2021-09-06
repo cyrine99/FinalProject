@@ -133,7 +133,7 @@
 <script>
     jQuery(document).ready(function($){
 
-	var localUrl='http://192.168.1.3:8080';
+	var localUrl='http://127.0.0.1:8000';
 
         $('#notify-comet').on('click', function()
         {

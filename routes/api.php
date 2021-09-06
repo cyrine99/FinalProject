@@ -62,7 +62,7 @@ Route::get('showForUser/{id}/{state}','BalagController@showForUser')->name('show
 
 
 //API For Show All Balag
-Route::get('showAll','BalagController@showAll')->name('showAll');
+Route::get('showAll/{state}','BalagController@showAll')->name('showAll');
 
 
 

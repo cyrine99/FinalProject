@@ -25,13 +25,18 @@ class BalagController extends Controller
 
         $request->validate([
             'id_patient'=>'required',
-            'location'=>'required',
+            'location_latitude'=>'required',
+            'location_longitude'=>'required',
             'phone'=>'required',
             'for_you'=>'required',
             'balag_type'=>'required',
             'location_description'=>'required',
             'number_of_persons'=>'required',
             'balag_state'=>'required',
+            'name'=>'required',
+            'age'=>'required',
+            'notes'=>'required',
+            'gender'=>'required'
 
         ]);
 
@@ -49,7 +54,7 @@ class BalagController extends Controller
 
     public function showForUser($id,$state)
     {
-        $data =DB::table('balags')->where('id', $id)->where('balag_state',$state)->get() ;
+        $data =DB::table('balags')->where('id_patient', $id)->where('balag_state',$state)->orderByRaw('created_at DESC')->get() ;
         if($data)
         {
             return response()->json($data,200);
@@ -61,9 +66,9 @@ class BalagController extends Controller
     }
 
 
-    public function showAll()
+    public function showAll($state)
     {
-        $data =Balag::all() ;
+        $data =DB::table('balags')->where('balag_state',$state)->orderByRaw('created_at DESC')->get() ;
         if($data) {
             return response()->json($data,200);
         }
