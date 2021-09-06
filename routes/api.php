@@ -65,6 +65,12 @@ Route::get('showForUser/{id}/{state}','BalagController@showForUser')->name('show
 Route::get('showAll/{state}','BalagController@showAll')->name('showAll');
 
 
+/*************************/
+//API For insert MedicalHistory
+Route::resource('MedicalHistoryAdd',MedicalHistoryController::class);
+
+
+
 
 
 
