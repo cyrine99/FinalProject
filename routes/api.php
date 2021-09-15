@@ -73,6 +73,8 @@ Route::resource('MedicalHistoryAdd',MedicalHistoryController::class);
 //API For show MedicalHistory For user
 Route::get('MedicalHistoryShowForUser/{id}','MedicalHistoryController@MedicalHistoryShowForUser');
 
+//API For insert ParamedicBalag
+Route::resource('ParamedicBalagAdd',ParamedicBalagController::class);
 
 
 
