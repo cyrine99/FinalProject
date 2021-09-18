@@ -76,8 +76,16 @@ Route::get('MedicalHistoryShowForUser/{id}','MedicalHistoryController@MedicalHis
 //API For insert ParamedicBalag
 Route::resource('ParamedicBalagAdd',ParamedicBalagController::class);
 
+//**************//
+
+//For Balags
+Route::post('BalagUpdate', 'ParamedicBalagController@BalagUpdate');
+Route::get('BalagNotClose/{id}/{state}', 'ParamedicBalagController@BalagNotClose');
+Route::get('BalagData/{id}', 'ParamedicBalagController@BalagData');
 
 
+//API For insert ParamedicLogin Tokens
+Route::resource('ParamedicLogin',LoginParamedicController::class);
 
 
 
