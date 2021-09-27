@@ -35,48 +35,37 @@ class LoginParamedicController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\LoginParamedic  $loginParamedic
-     * @return \Illuminate\Http\Response
-     */
+ 
     public function show(LoginParamedic $loginParamedic)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\LoginParamedic  $loginParamedic
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit(LoginParamedic $loginParamedic)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\LoginParamedic  $loginParamedic
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, LoginParamedic $loginParamedic)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\LoginParamedic  $loginParamedic
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(LoginParamedic $loginParamedic)
+    public function destroy($id,$token)
     {
-        //
+      $delete=LoginParamedic::
+          where('id_paramedic',$id)->
+          where('token',$token)->
+          delete();
+        if($delete)
+        {
+            return response()->json($delete,200);
+        }
+        else
+        {
+            return response()->json('Error',400);
+        }
+
     }
 }

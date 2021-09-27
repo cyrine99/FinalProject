@@ -24,19 +24,7 @@ class PatientController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate(
-            [
-                'firstname'=>'required',//و تحقق ان الاسم مش مكرر في الجدول
-                'lastname'=>'required',
-                'birthDate'=>'required',
-                'gender'=>'required',
-                'phone'=>'required|unique:patients',
-                'length'=>'required',
-                'weight'=>'required',
-                'deaf'=>'required',
-            ]
-        );
-
+  
         $data=Patient::create($request->all());
 
         if($data)
@@ -45,37 +33,56 @@ class PatientController extends Controller
         }
         else
         {
-            return response()->json($data,400);
-
+            return response()->json('Error',400);
         }
 
     }
 
 
-
-    public function show(Patient $patient)
+   public function ShowUserData($id)
     {
-        //
+        $data = Patient::where('id', $id)->get();
+
+        if($data)
+        {
+            return response()->json($data,200);
+        }
+        else
+        {
+            return response()->json('Error',400);
+
+        }
     }
 
 
-    public function edit(Patient $patient)
+
+    public function updateUserData(Request $request)
     {
-        //
+        $update= Patient::where('id',$request->id)->update([
+        
+           'firstname'=>$request->firstname,
+           'lastname'=>$request->lastname,
+           'birthDate'=>$request->birthDate,
+           'gender'=>$request->gender,
+           'length'=>$request->length,
+           'weight'=>$request->weight,
+           'deaf'=>$request->deaf
+            
+            ]);
+            
+        if($update)
+         {
+            return response()->json($request,200);
+        }
+        else
+        {
+            return response()->json('Error',400);
+        }
+    
     }
 
-
-    public function update(Request $request, Patient $patient)
-    {
-        //
-    }
-
-    public function destroy(Patient $patient)
-    {
-        //
-    }
-
- public function checkLoginAlmuseif (Request $request)
+  
+      public function checkLoginAlmuseif (Request $request)
     {
         $userInfo=Patient::where('phone','=',$request->phone)->first();
 

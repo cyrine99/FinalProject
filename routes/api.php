@@ -66,33 +66,50 @@ Route::get('showAll/{state}','BalagController@showAll')->name('showAll');
 
 
 /*************************/
-
 //API For insert MedicalHistory
 Route::resource('MedicalHistoryAdd',MedicalHistoryController::class);
 
+
 //API For show MedicalHistory For user
 Route::get('MedicalHistoryShowForUser/{id}','MedicalHistoryController@MedicalHistoryShowForUser');
+
 
 //API For insert ParamedicBalag
 Route::resource('ParamedicBalagAdd',ParamedicBalagController::class);
 
 //**************//
 
-//For Balags
 Route::post('BalagUpdate', 'ParamedicBalagController@BalagUpdate');
+
+
 Route::get('BalagNotClose/{id}/{state}', 'ParamedicBalagController@BalagNotClose');
+
 Route::get('BalagData/{id}', 'ParamedicBalagController@BalagData');
+
 
 
 //API For insert ParamedicLogin Tokens
 Route::resource('ParamedicLogin',LoginParamedicController::class);
 
 
+//API For insert ParamedicLogin Tokens
+Route::get('deletToken/{id}/{token}','LoginParamedicController@destroy');
+
+/*************/
+//API For chick  MedicalHistory For user
+Route::get('haveMedicalHistory/{id}','MedicalHistoryController@haveMedicalHistory');
+
+Route::post('MedicalHistoryUpdate', 'MedicalHistoryController@MedicalHistoryUpdate');
 
 
+Route::get('ShowUserData/{id}','PatientController@ShowUserData');
 
+Route::post('updateUserData','PatientController@updateUserData');
 
+Route::get('deleteTokenUser/{id}/{token}','LoginPatientController@deleteTokenUser');
 
+/*************/
+Route::get('cancelBalag/{id_Balag}/{id_patient}/{state}','BalagController@cancelBalag');
 
 
 

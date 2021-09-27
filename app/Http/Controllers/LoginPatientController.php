@@ -53,8 +53,20 @@ class LoginPatientController extends Controller
     }
 
 
-    public function destroy(LoginPatient $loginPatient)
+    public function deleteTokenUser($id,$token)
     {
-        //
+      $delete=LoginPatient::
+          where('patient_id',$id)->
+          where('tokens',$token)->
+          delete();
+        if($delete)
+        {
+            return response()->json($delete,200);
+        }
+        else
+        {
+            return response()->json('Error',400);
+        }
+
     }
 }
