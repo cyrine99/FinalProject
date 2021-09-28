@@ -18,17 +18,18 @@ use Illuminate\Support\Facades\DB;
 class ExitPermissionRequestController extends Controller
 {
 
+
  //دالة لجلب التصريح حسب مريض معين
     public function exitPermissionForOnePatient($id)
     {
          $permissions = DB::table('exit_permission_requerts')->where('patient_id', $id)->orderByRaw('created_at DESC')->get();
-        
+
              if($permissions!= null){
                  echo json_encode($permissions);
-                
+
           }
-      
-        
+
+
     }
 
     public function notificationCount()
@@ -60,8 +61,8 @@ class ExitPermissionRequestController extends Controller
 
     public function AllRequestBody()
     {
-        //$data['ExitPermissionRequests']=;
-        echo json_encode(ExitPermissionRequert::orderByRaw('created_at DESC')->get());
+        //First 10 requests
+        echo json_encode(ExitPermissionRequert::orderByRaw('created_at DESC')->take(10)->get());
     }
 
 

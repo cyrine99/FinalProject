@@ -3,7 +3,6 @@
 <head>
     @include('Links.head')
     <title >طلب تصرح</title>
-{{--Git Hub Test--}}
 
 </head>
 <body>
@@ -21,11 +20,10 @@
                     <div class="wrap d-md-flex"  >
                         <div class="login-wrap p-4 p-lg-5" >
                             <div class="d-flex">
-                                <div  dir="rtl" class="w-100">
+                                <div style="text-align: center" class="w-100">
 
+{{--                                    <h3 style="text-align: center;background-color: #dae9fa" class="mb-4">طلب تصريح</h3>--}}
 
-
-                                    <h3 style="font-family: BaseFont" class="mb-4">طلب تصريح</h3>
                                     @csrf
                                     @if(Session::get('success'))
                                         <div class="alert alert-success">
@@ -34,13 +32,8 @@
                                             </script>
                                             {{Session::get('success')}}
                                         </div>
+
                                     @endif
-
-
-                                    @if($permissionData->request_state !=0)
-                                        <h1>تم الرد على هذا التصريح من قبل</h1>
-                                     @endif
-                                    @if($permissionData->request_state ==0)
 
 
                                             @if(Session::get('success'))
@@ -54,39 +47,60 @@
                                                     {{Session::get('fail')}}
                                                 </div>
                                             @endif
-                                            <h1 >تفاصيل الحالة</h1>
+
+                                            <h2 style="background-color: #dafadd"  >تفاصيل الحالة</h2>
                                             <h3> {{$permissionData->state_details}}</h3>
-                                            <h1 >الاسم بالكامل</h1>
+                                                <br>
+                                                <br>
+                                            <h2 style="background-color: #dafadd" >الاسم بالكامل</h2>
                                             <h3> {{$permissionData->driver_name}}</h3>
-                                            <h1 >رقم الهوية</h1>
+                                                <br>
+                                                <br>
+
+                                                <h2 style="background-color: #dafadd" >رقم الهوية</h2>
                                             <h3> {{$permissionData->driver_id}}</h3>
-                                            <h1 >رقم الهاتف</h1>
+                                                <br>
+                                                <br>
+
+                                                <h2 style="background-color: #dafadd" >رقم الهاتف</h2>
                                             <h3> {{$permissionData->driver_phone}}</h3>
-                                            <h1 >رقم لوحة السيارة</h1>
+                                                <br>
+                                                <br>
+
+                                                <h2 style="background-color: #dafadd">رقم لوحة السيارة</h2>
                                             <h3> {{$permissionData->car_bord_number}}</h3>
-                                            <h1 >عنوان المنزل</h1>
+
+                                                <br>
+                                                <br>
+
+                                                <h2 style="background-color: #dafadd" >عنوان المنزل</h2>
                                             <h3> {{$permissionData->home_address}}</h3>
-                                            <h1 >المستشفى</h1>
+                                                <br>
+                                                <br>
+
+                                                <h2 style="background-color: #dafadd" >المستشفى</h2>
                                             <h3> {{$permissionData->hospital_name}}</h3>
-                                            <h1 >وقت طلب التصريح</h1>
+                                                <br>
+                                                <br>
+
+                                                <h2 style="background-color: #dafadd" >وقت طلب التصريح</h2>
                                             <h3> {{$permissionData->date_time_request}}</h3>
+                                                <br>
+                                                <br>
 
-                                        <a href="{{ url('/OkRequest/'.$permissionData->id.'/'.$permissionData->patient_id ) }}"  class="btn btn-success"><i style="margin: 10px" class="fas fa-check-circle"></i>قبول</a>
+                                                <br>
+                                                <br>
 
-                                        <a href="{{ url('/CancelRequest/'.$permissionData->id.'/'.$permissionData->patient_id ) }}" class="btn btn-danger"><i style="margin: 10px" class="fas fa-frown"></i>رفض
-                                        </a>
+                                                @if($permissionData->request_state ==0)
 
+                                                        <a href="{{ url('/OkRequest/'.$permissionData->id.'/'.$permissionData->patient_id ) }}"  class="btn btn-success"><i style="margin: 10px" class="fas fa-check-circle"></i>قبول</a>
+                                                        <a href="{{ url('/CancelRequest/'.$permissionData->id.'/'.$permissionData->patient_id ) }}" class="btn btn-danger"><i style="margin: 10px" class="fas fa-frown"></i>رفض</a>
 
-
-                                            <div class="form-group d-md-flex">
-
-                                            </div>
-
-
-
-
-                                    @endif
-
+                                                @else
+                                                        <h1  style="text-align: center;color: #adb5bd">تم الرد على هذا التصريح من قبل</h1>
+                                                        <br>
+                                                        <br>
+                                                @endif
 
 
 

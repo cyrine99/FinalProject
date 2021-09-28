@@ -38,7 +38,8 @@ Route::namespace('Admin')->group(function ()
         Route::get('addParamedicsUi','AdminController@addParamedicsUi')->name('addParamedicsUi');
         Route::get('registerUpdateAndDelete','AdminController@registerUpdateAndDelete')->name('registerUpdateAndDelete');
         Route::get('addParamedicsUi','AdminController@addParamedicsUi')->name('addParamedicsUi');
-
+        Route::get('allExitPermission','AdminController@allExitPermission')->name('allExitPermission');
+        Route::get('balagsMain','AdminController@balagsMain')->name('balagsMain');
     });
 
 });
@@ -56,8 +57,8 @@ Route::middleware('AuthCheck')->group(function () {
     Route::get('CancelRequest/{id}/{id_patient}', 'ExitPermissionRequestController@CancelRequest')->name('CancelRequest');
     Route::get('OkRequest/{id}/{id_patient}', 'ExitPermissionRequestController@OkRequest')->name('OkRequest');
 
-
-
+    Route::get('balags/{state}','BalagController@balags')->name('balags');
+    Route::get('paramedic_name/{id}','BalagController@paramedic_name')->name('paramedic_name');
 
 
 

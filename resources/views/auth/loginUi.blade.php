@@ -58,14 +58,7 @@
 
 
 
-                                <div class="w-50 text-md-right">
-                                    <a href="#">نسيت كلمة المرور</a>
-                                    <br>
-                                    <a href="#">استعادة اسم المستخدم</a>
 
-
-
-                                </div>
                             </div>
                         </form>
                     </div>

@@ -24,7 +24,7 @@
 
         <div class="dash-nav-dropdown ">
             <a href="#!" class="dash-nav-item dash-nav-dropdown-toggle">
-                <i class="fas fa-cube"></i> المسعفون </a>
+                <i class="fas fa-hands-helping"></i> المسعفون </a>
             <div class="dash-nav-dropdown-menu">
                 <a href="" class="dash-nav-dropdown-item">كل المسعفون</a>
                 <a href="{{route('addParamedicsUi')}}" class="dash-nav-dropdown-item">إضافة مسعف</a>
@@ -33,8 +33,17 @@
         </div>
 
 
+        <a href="{{route('allExitPermission')}}" class="dash-nav-item">
+            <i class="fas fa-car-side"></i>التصاريح </a>
+
+
+        <a href="{{route('balagsMain')}}" class="dash-nav-item">
+            <i class="fas fa-running"></i> البلاغات </a>
+
         <a href="{{route('dashboard')}}" class="dash-nav-item">
-            <i class="fas fa-building"></i> المدن و المناطق </a>
+            <i class="fas fa-globe-americas"></i> المدن و المناطق </a>
+
+
 
     </nav>
 </div>

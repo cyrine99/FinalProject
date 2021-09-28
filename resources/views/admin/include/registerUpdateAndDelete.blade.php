@@ -67,7 +67,7 @@
                                     <th >الرقم الوظيفي </th>
                                     <th >نوع المستخدم</th>
                                     <th >البريد الالكتروني</th>
-                                    <th  width="280px">العملية</th>
+                                    <th  >العملية</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -85,7 +85,10 @@
                                         <td >{{ $value->email }}</td>
                                         <td >
                                                 <a href="#" rel="{{ $value->id }}" rel1="{{ route('admins.update',$value->id) }}"  class="btn edit" style="color: #17a2b8" ><i class="fas fa-user-edit"></i></a>
-                                                <a rel="{{ $value->id }}" rel1="{{ route('admins.destroy',$value->id) }}" class="btn servideletebtn" style="color: #dc3545"> <i class="far fa-trash-alt"></i> </a>
+                                                <a rel="{{ $value->id }}" rel1="{{ route('admins.destroy',$value->id) }}" class="btn servideletebtn" style="color: #dc3545"> <i class="fas fa-times-circle"></i></a>
+{{--                                               لتفعيل المستخدم اذا كان غير مفعل --}}
+                                                <a rel="{{ $value->id }}" rel1="{{ route('admins.destroy',$value->id) }}" class="btn servideletebtn" style="color: rgba(128,236,61,0.53)"> <i class="fas fa-check-circle"></i> </a>
+
                                         </td>
                                     </tr>
 

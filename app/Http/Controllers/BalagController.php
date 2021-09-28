@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AdminModel;
 use App\Models\Balag;
+use App\Models\Paramedics;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -43,17 +45,17 @@ class BalagController extends Controller
         $store=Balag::create($request->all());
 
         if($store) {
-            
+
               $balagNoty = DB::table('login_paramedics')->get();
 
             foreach($balagNoty as $key => $value)
             {
                   $this->sendNoty($value->token,'هل أنت جاهز ؟!','أحد المستخدمين قام بطلب المساعدة , شاهد قائمة البلاغات ربما يكون المستخدم قريب منك !');
             }
-            
+
             return response()->json($store,200);
-            
-          
+
+
         }
         else
         {
@@ -139,7 +141,7 @@ public function sendNoty($token,$title,$body)
         $response = curl_exec($ch);
 
     }
-    
+
     public function cancelBalag($id_Balag,$id_patient,$state)
     {
         if($state==0)
@@ -149,7 +151,7 @@ public function sendNoty($token,$title,$body)
          where('id_patient', $id_patient)->
          where('balag_state',$state)->
         delete() ;
-        
+
         if($data)
         {
             return response()->json($data,200);
@@ -158,9 +160,33 @@ public function sendNoty($token,$title,$body)
         {
             return response()->json('Error',400);
         }
-        
+
         }
-       
+
+    }
+
+    public function balags($state)
+    {
+        $data['state_number']=$state;
+
+        if($state==0)
+        {
+            $data['balags']=DB::table('balags')->where('balag_state',$state)->get();
+        }
+        else
+        {
+            $data['balags']=DB::table('paramedic_balags')->where('balag_state',$state)->get();
+        }
+        $data['LoggedInfo']=AdminModel::where('id','=',session('LoggedUser'))->first();
+        return view('admin.include.balags',$data);
+    }
+
+
+    public function paramedic_name($id)
+    {
+        $data['paramedic_name']=Paramedics::where('id',$id)->get();
+        return view('admin.include.balags',$data);
+
     }
 
 }

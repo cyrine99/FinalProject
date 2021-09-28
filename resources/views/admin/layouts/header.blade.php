@@ -3,18 +3,16 @@
     <a href="#!" class="menu-toggle">
         <i class="fas fa-bars"></i>
     </a>
-    <a href="#!" class="searchbox-toggle">
-        <i class="fas fa-search"></i>
-    </a>
-    <form class="searchbox" action="#!">
-       حفظ الله ليبيا
-    </form>
+
+    <h5 class="col-md-6" style="text-align: right">
+      جمعية الهلال الاحمر الليبي
+    </h5>
     <div class="tools">
 
 
 
         <a id="notify-comet"  data-toggle="modal" data-target="#exampleModal" class="tools-item">
-            <i class="fas fa-bell"></i>
+            <i style="cursor: pointer" class="fas fa-bell"></i>
             <i id="not-count"  class="tools-item-count"></i>
         </a>
 
@@ -24,11 +22,11 @@
 
         @include('Links.body_js')
 
-        <div class="dropdown tools-item">
+        <div class="dropdown tools-item" >
             <a href="#" class="" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-user"></i>
             </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+            <div style="text-align: right" class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
                 <a class="dropdown-item" href="#!">الملف الشخصي</a>
                 <a class="dropdown-item" href="{{route('logout')}}">خروج</a>
             </div>
@@ -118,6 +116,7 @@
                     <div id="modelRequests" class="row">
 
                     </div>
+                    <a style="text-align: center" href="{{route('allExitPermission')}}">عرض كل التصاريح</a>
                 </div>
 
 

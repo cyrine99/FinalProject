@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 
 
+use App\Http\Controllers\ExitPermissionRequestController;
 use App\Models\ExitPermissionRequert;
 use Illuminate\Http\Request;
 use  Illuminate\Routing\Controller;
@@ -48,4 +49,16 @@ class AdminController extends Controller
         $data['LoggedInfo']=AdminModel::where('id','=',session('LoggedUser'))->first();
         return view('admin.include.addParamedicsUi',$data);
     }
+    public function allExitPermission()
+    {
+        $data['AllRequestBody']= ExitPermissionRequert::orderByRaw('created_at DESC')->get();
+        $data['LoggedInfo']=AdminModel::where('id','=',session('LoggedUser'))->first();
+        return view('admin.include.allExitPermissions',$data);
+    }
+    public function balagsMain()
+    {
+        $data['LoggedInfo']=AdminModel::where('id','=',session('LoggedUser'))->first();
+        return view('admin.include.balagsMain',$data);
+    }
+
 }

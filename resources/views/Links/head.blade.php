@@ -8,15 +8,15 @@
 <script src="{{URL::asset('js/chart-js-config.js')}}"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
+
+
 <style>
     @font-face {
-        font-family: BaseFont;
-        src: url('fonts/Hanimation_Arabic_Regular.otf')  format('truetype');
+        src: url('/../fonts/Hanimation_Arabic_Regular.otf');
+        font-family: "custom-font";
     }
 
-    div,h2 , h3{
-        font-family: BaseFont;
+    h1, h2, h3, h4, h5, h6 ,p ,span,a,div{
+        font-family: "custom-font";
     }
-
 </style>
-
