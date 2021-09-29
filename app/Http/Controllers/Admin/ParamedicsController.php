@@ -36,8 +36,6 @@ class ParamedicsController extends Controller
            'BD_Day'=>'required',
            'BD_Month'=>'required',
            'BD_Year'=>'required',
-           'city'=>'required',
-           'area'=>'required',
            'IDnumber'=>'required|max:50|unique:Paramedics',
            'username'=>'required|max:50|unique:Paramedics',
            'password'=>'required|min:5|max:12',
@@ -52,16 +50,17 @@ class ParamedicsController extends Controller
         $paramedic->BD_Day=$request->BD_Day;
         $paramedic->BD_Month=$request->BD_Month;
         $paramedic->BD_Year=$request->BD_Year;
-        $paramedic->city=$request->city;
-        $paramedic->area=$request->area;
         $paramedic->IDnumber=$request->IDnumber;
         $paramedic->username=$request->username;
         $paramedic->password=Hash::make($request->password);
+        $paramedic->paramedic_state=1;
 
         $store=$paramedic->save();
 
         if($store)
+        {
             return back()->with('success','تم تسجيل المسعف بنجاح');
+        }
 
         return back()->with('fail','هناك مشكلة ما ! ارجوا المحاولة لاحقا');
 
@@ -82,17 +81,121 @@ class ParamedicsController extends Controller
         //
     }
 
-    public function update(Request $request, Paramedics $paramedics)
+    public function update(Request $request,$id)
     {
-        //
+        $paramedic=Paramedics::find($id);
+
+        if ($paramedic->phone!=$request->phone)
+        {
+            $userInfo=Paramedics::where('phone','=',$request->phone)->first();
+
+            if($userInfo)
+            {
+                return back()->with('fail','رقم الهاتف مكرر !! ');
+            }
+
+        }
+
+        if ($paramedic->email!=$request->email)
+        {
+            $userInfo=Paramedics::where('email','=',$request->email)->first();
+
+            if($userInfo)
+            {
+                return back()->with('fail','البريد الإلكتروني  مكرر !! ');
+            }
+        }
+
+        if ($paramedic->IDnumber!=$request->IDnumber)
+        {
+            $userInfo=Paramedics::where('IDnumber','=',$request->IDnumber)->first();
+
+            if($userInfo)
+            {
+                return back()->with('fail','الرقم الوطني مكرر !! ');
+            }
+        }
+
+            $paramedic->firstname = $request->firstname;
+            $paramedic->father_name = $request->father_name;
+            $paramedic->grand_name = $request->grand_name;
+            $paramedic->lastname = $request->lastname;
+            $paramedic->phone = $request->phone;
+            $paramedic->email = $request->email;
+            $paramedic->BD_Day = $request->BD_Day;
+            $paramedic->BD_Month = $request->BD_Month;
+            $paramedic->BD_Year = $request->BD_Year;
+            $paramedic->IDnumber = $request->IDnumber;
+
+            $update = $paramedic->save();
+
+            if ($update) {
+
+                return back()->with('success', 'تم تعديل المسعف بنجاح');
+            } else {
+                return back()->with('fail', 'هناك مشكلة ما ! ارجوا المحاولة لاحقا');
+            }
+
+
+    }
+
+    public function deactiveParamedic($id)
+    {
+
+        $updateActive= Paramedics::where('id',$id)->update([
+            'paramedic_state' => 0
+        ]);
+
+
+        if($updateActive)
+        {
+            return response()->json(['status'=>'تم إلغاء تفعيل المسعف بنجاح']);
+        }
+        else
+        {
+            return back()->with('fail','هناك مشكلة ما ! ارجوا المحاولة لاحقا');
+        }
+
     }
 
 
-    public function destroy(Paramedics $paramedics)
+
+    public function destroy($id)
     {
-        //
+
+        $updateActive= Paramedics::where('id',$id)->update([
+            'paramedic_state' => 0
+        ]);
+
+
+        if($updateActive)
+        {
+            return response()->json(['status'=>'تم إلغاء تفعيل المسعف بنجاح']);
+        }
+        else
+        {
+            return back()->with('fail','هناك مشكلة ما ! ارجوا المحاولة لاحقا');
+        }
+
     }
 
+    public function activeParamedic($id)
+    {
+        $updateActive= Paramedics::where('id',$id)->update([
+            'paramedic_state' => 1
+        ]);
+
+
+        if($updateActive)
+        {
+            return response()->json(['status'=>'تم  تفعيل المسعف بنجاح']);
+        }
+        else
+        {
+            return back()->with('fail','هناك مشكلة ما ! ارجوا المحاولة لاحقا');
+        }
+
+    }
 
 
 }

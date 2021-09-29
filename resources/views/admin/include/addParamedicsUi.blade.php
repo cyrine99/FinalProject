@@ -192,43 +192,6 @@
                                    </div>
                                 </fieldset>
 
-                           <fieldset class="form-group mb-3">
-                               <legend  style="text-align: right;margin-right: 30px">العنوان</legend>
-                                    <div class="row">
-                                        <div class="col-md-6 form-group mb-3">
-                                            <select required name="city" class="form-control" aria-label="Default select example" >
-                                                <option value="{{old('city')}}" style="color:#c1c1c1" selected>إختر المدينة</option>
-                                                <option value="1">طرابلس</option>
-                                            </select>
-                                            <span class="text-danger">
-                                            @error('city')
-                                                {{$message}}
-                                                @enderror
-                                        </span>
-                                        </div>
-                                        <div class="col-md-6 form-group mb-3">
-                                            <select required name="area" class="form-control" aria-label="Default select example" >
-                                                {{--طريقة التعبئة غير صحيحة !!! سيتم ان شاء الله تصحيحها و يتم جلبها من DB--}}
-                                                <option value="{{old('area')}}" style="color:#c1c1c1" selected>إختر المنطقة</option>
-
-                                                <option value="1">حي الأندلس</option>
-                                                <option value="2">تاجوراء</option>
-                                                <option value="3">خلة الفرجان</option>
-                                                <option value="4">سيدي سليم</option>
-                                                <option value="5"> الكريمية</option>
-                                                <option value="6">صلاح الدين</option>
-                                                <option value="7">سوق الجمعة</option>
-                                            </select>
-                                            <span class="text-danger">
-                                            @error('area')
-                                                {{$message}}
-                                                @enderror
-                                        </span>
-                                        </div>
-
-                                    </div>
-                                </fieldset>
-
                                 <div class="form-group mb-3">
 
                                     <input required name="IDnumber" type="number" class="form-control" placeholder="الرقم الوطني "  value="{{old('IDnumber')}}" >

@@ -174,6 +174,7 @@ public function sendNoty($token,$title,$body)
             $data['balags']=DB::table('balags')->where('balag_state',$state)->get();
         }
         else
+
         {
             $data['balags']=DB::table('paramedic_balags')->where('balag_state',$state)->get();
         }

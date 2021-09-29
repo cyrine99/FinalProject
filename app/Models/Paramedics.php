@@ -19,10 +19,9 @@ class Paramedics extends Model
         'BD_Day',
         'BD_Month',
         'BD_Year',
-        'city',
-        'area',
         'IDnumber',
         'username',
-        'password'
+        'password',
+        'paramedic_state'
     ];
 }

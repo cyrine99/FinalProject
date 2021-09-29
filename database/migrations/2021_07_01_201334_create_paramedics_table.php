@@ -24,11 +24,10 @@ class CreateParamedicsTable extends Migration
             $table->integer('BD_Day');
             $table->integer('BD_Month');
             $table->integer('BD_Year');
-            $table->integer('city');
-            $table->integer('area');
             $table->string('IDnumber');
             $table->string('username');
             $table->string('password');
+            $table->string('paramedic_state');
             $table->timestamps();
         });
     }

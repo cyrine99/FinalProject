@@ -17,7 +17,7 @@
                     <i class="fas fa-chart-bar"></i> المستخدمون </a>
                 <div class="dash-nav-dropdown-menu">
                     <a href="{{route('register')}}" class="dash-nav-dropdown-item">إضافة مستخدم</a>
-                    <a href="{{route('registerUpdateAndDelete')}}" class="dash-nav-dropdown-item">المستخدمين</a>
+                    <a href="{{route('registerUpdateAndDelete')}}" class="dash-nav-dropdown-item">المستخدمون</a>
                 </div>
             </div>
         @endif
@@ -27,7 +27,7 @@
                 <i class="fas fa-hands-helping"></i> المسعفون </a>
             <div class="dash-nav-dropdown-menu">
                 <a href="{{route('addParamedicsUi')}}" class="dash-nav-dropdown-item">إضافة مسعف</a>
-                <a href="{{route('registerUpdateAndDelete')}}" class="dash-nav-dropdown-item">المسعفين</a>
+                <a href="{{route('updateAndDeleteParamedics')}}" class="dash-nav-dropdown-item">المسعفون</a>
             </div>
         </div>
 
@@ -39,8 +39,7 @@
         <a href="{{route('balagsMain')}}" class="dash-nav-item">
             <i class="fas fa-running"></i> البلاغات </a>
 
-        <a href="{{route('dashboard')}}" class="dash-nav-item">
-            <i class="fas fa-globe-americas"></i> المدن و المناطق </a>
+
 
 
 

@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\ExitPermissionRequestController;
 use App\Models\ExitPermissionRequert;
+use App\Models\Paramedics;
 use Illuminate\Http\Request;
 use  Illuminate\Routing\Controller;
 
@@ -60,5 +61,10 @@ class AdminController extends Controller
         $data['LoggedInfo']=AdminModel::where('id','=',session('LoggedUser'))->first();
         return view('admin.include.balagsMain',$data);
     }
-
+    public function updateAndDeleteParamedics()
+    {
+        $data['LoggedInfo']=AdminModel::where('id','=',session('LoggedUser'))->first();
+        $data['AllUsers']=Paramedics::all();
+        return view('admin.include.paramedicsUpdateAndDelete',$data);
+    }
 }

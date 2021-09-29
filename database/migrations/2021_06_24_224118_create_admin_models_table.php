@@ -22,6 +22,8 @@ class CreateAdminModelsTable extends Migration
             $table->string('email');
             $table->integer('userType');
             $table->string('password');
+            $table->integer('admin_state');
+
             $table->timestamps();
         });
     }

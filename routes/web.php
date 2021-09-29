@@ -25,8 +25,10 @@ Route::namespace('Admin')->group(function ()
     Route::resource('admins', RegisterController::class);
 
     Route::get('active/{id}', 'RegisterController@active')->name('active');
+    Route::get('activeParamedic/{id}', 'ParamedicsController@activeParamedic')->name('activeParamedic');
 
-
+    Route::get('admins_deactivate/{id}', 'RegisterController@admins_deactivate')->name('admins_deactivate');
+    Route::get('deactiveParamedic/{id}', 'ParamedicsController@deactiveParamedic')->name('deactiveParamedic');
 
     //ParamedicsUi
     Route::resource('paramedics',ParamedicsController::class);
@@ -43,6 +45,8 @@ Route::namespace('Admin')->group(function ()
         Route::get('addParamedicsUi','AdminController@addParamedicsUi')->name('addParamedicsUi');
         Route::get('allExitPermission','AdminController@allExitPermission')->name('allExitPermission');
         Route::get('balagsMain','AdminController@balagsMain')->name('balagsMain');
+        Route::get('updateAndDeleteParamedics','AdminController@updateAndDeleteParamedics')->name('updateAndDeleteParamedics');
+
     });
 
 });

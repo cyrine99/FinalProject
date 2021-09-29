@@ -75,7 +75,7 @@
                                     <tbody>
                                     @foreach($balags as $value)
                                         <td >{{$value->id}}</td>
-                                        <td >{{$value->paramedic_id }}</td>
+                                        <td >{{$value->firstname}}  {{$value->father_name}}   {{$value->grand_name}}  {{$value->lastname}} </td>
                                         <td >{{$value->time_deny_task}}</td>
                                         <td >{{$value->reasons_for_rejection}}</td>
                                         <td >{{$value->notes_reasons_for_rejection}}</td>
@@ -100,7 +100,8 @@
                                     <tbody>
                                     @foreach($balags as $value)
                                         <td >{{$value->id}}</td>
-                                        <td >{{$value->paramedic_id }}</td>
+                                        <td >{{$value->paramedic_id}}</td>
+                                        {{--                                        <td >{{$value->firstname}}  {{$value->father_name}}   {{$value->grand_name}}  {{$value->lastname}} </td>--}}
                                         <td >{{$value->time_accept_task}}</td>
                                         </tr>
                                     @endforeach

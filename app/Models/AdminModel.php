@@ -17,7 +17,8 @@ class AdminModel extends Model
         'employeeId',
         'email',
         'userType',
-        'password'
+        'password',
+        'admin_state'
     ];
 
 

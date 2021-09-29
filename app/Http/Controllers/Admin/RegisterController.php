@@ -47,7 +47,7 @@ class RegisterController extends Controller
         $admin->email=$request->email;
         $admin->userType=$request->userType;
         $admin->password=Hash::make($request->password);
-
+        $admin->admin_state=1;
         $save=$admin->save();
 
         if($save)
@@ -129,6 +129,25 @@ class RegisterController extends Controller
     }
 
     public function destroy($id)
+    {
+
+        $updateActive= AdminModel::where('id',$id)->update([
+            'admin_state' => 0
+        ]);
+
+
+        if($updateActive)
+        {
+            return response()->json(['status'=>'تم إلغاء تفعيل المستخدم بنجاح']);
+        }
+        else
+        {
+            return back()->with('fail','هناك مشكلة ما ! ارجوا المحاولة لاحقا');
+        }
+
+    }
+
+    public function admins_deactivate($id)
     {
 
         $updateActive= AdminModel::where('id',$id)->update([

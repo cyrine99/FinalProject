@@ -77,18 +77,6 @@ class ParamedicsControllerAPI extends Controller
 
 
 
-    public function show(Paramedics $paramedics)
-    {
-        //
-    }
-
-
-    public function update(Request $request, Paramedics $paramedics)
-    {
-        //
-    }
-
-
     public function destroy(Paramedics $paramedics)
     {
         //
