@@ -188,7 +188,7 @@
 
                 },
                 error: function ( data ) {
-                    alert(data);
+
                 }
             });
         });
@@ -208,7 +208,7 @@
 
                 },
                 error: function ( data ) {
-                    alert(data);
+
                 }
             });
 
@@ -224,7 +224,7 @@
                     $('#unrederRequest').html(data);
                 },
                 error: function ( data ) {
-                    alert(data);
+
                 }
             });
 
@@ -243,7 +243,7 @@
 
                 },
                 error: function ( data ) {
-                    alert(data);
+
                 }
             });
 
@@ -262,7 +262,7 @@
 
                 },
                 error: function ( data ) {
-                    alert(data);
+
                 }
             });
 
@@ -282,7 +282,7 @@
 
                 },
                 error: function ( data ) {
-                    alert(data);
+
                 }
             });
 

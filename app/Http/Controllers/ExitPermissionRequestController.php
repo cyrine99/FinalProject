@@ -67,13 +67,19 @@ class ExitPermissionRequestController extends Controller
 
 
 
-    public function CancelRequest($id,$id_patient)
+    public function CancelRequest($id,$id_patient,$id_admin)
     {
         $permissions = DB::table('login_patients')->where('patient_id', $id_patient)->get();
 
         $update=ExitPermissionRequert::where('id',$id)->update(['request_state' => -1]);
 
-        if($update)
+        $save=DB::table('exitpermission_admins')->insert([
+            'exitpermission_id' => $id,
+            'admin_id' => $id_admin,
+            'state'=>-1
+        ]);
+
+        if($update && $save)
         {
             foreach($permissions as $key => $value)
             {
@@ -92,14 +98,20 @@ class ExitPermissionRequestController extends Controller
 
     }
 
-    public function OkRequest($id,$id_patient)
+    public function OkRequest($id,$id_patient,$id_admin)
     {
 
         $permissions = DB::table('login_patients')->where('patient_id', $id_patient)->get();
 
         $update=ExitPermissionRequert::where('id',$id)->update(['request_state' => 1]);
 
-        if($update)
+        $save=DB::table('exitpermission_admins')->insert([
+            'exitpermission_id' => $id,
+            'admin_id' => $id_admin,
+            'state'=>1
+        ]);
+
+        if($update && $save)
         {
             foreach($permissions as $key => $value)
             {
@@ -200,9 +212,23 @@ class ExitPermissionRequestController extends Controller
     }
 
 
-    public function show( $id,$state)
+    public function show($id,$state)
     {
         $data['permissionData']= ExitPermissionRequert::find($id);
+
+        $data['admin_name']="nn";
+        if($state==1 || $state==-1)
+        {
+            $permissionData_exit_admin=DB::table('exitpermission_admins')->where('exitpermission_id', $id)->get();
+            foreach ($permissionData_exit_admin as $value)
+            {
+                $admin_id=$value->admin_id;
+            }
+            foreach (DB::table('admin_models')->where('id', $admin_id )->get() as $value)
+            {
+                $data['admin_name']=$value->firstname."  ".$value->lastname;
+            }
+        }
 
         $data['LoggedInfo']=AdminModel::where('id','=',session('LoggedUser'))->first();
         $data['AllUsers']=AdminModel::all();

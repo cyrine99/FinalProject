@@ -39,13 +39,13 @@
 
 
 
-        <main class="dash-content">
+        <main class="dash-content" style="background-color: rgb(255,255,255)">
 
-            <div class="row justify-content-center"  >
-                <div class="col-md-12 col-lg-10"   >
-                    <div class="col-md-12 wrap d-md-flex"  style="background-color: #fff" >
+{{--            <div class="row justify-content-center"  >--}}
+{{--                <div class="col-md-12 col-lg-10"   >--}}
+{{--                    <div class="col-md-12 wrap d-md-flex"  style="background-color: #fff" >--}}
 
-                        <div dir="ltr" class="col-md-12 table-responsive" >
+{{--                        <div dir="ltr" class="col-md-12 table-responsive" >--}}
                             <br>
                             @if(Session::get('success'))
                                 <div class="alert alert-success">
@@ -72,7 +72,16 @@
                                 </thead>
                                 <tbody>
                                 @foreach ($AllUsers as $value)
+
+                                    @if($LoggedInfo->id==$value->id)
+
+                                    @else
+
+                                    @if($value->admin_state==0)
+                                        <tr style="background-color: rgba(173,181,189,0.36)">
+                                    @else
                                     <tr>
+                                    @endif
                                         <td >{{ $value->id }}</td>
                                         <td >{{ $value->firstname }}</td>
                                         <td >{{ $value->lastname }}</td>
@@ -85,22 +94,29 @@
                                         <td >{{ $value->email }}</td>
                                         <td >
                                                 <a href="#" rel="{{ $value->id }}" rel1="{{ route('admins.update',$value->id) }}"  class="btn edit" style="color: #17a2b8" ><i class="fas fa-user-edit"></i></a>
-                                                <a rel="{{ $value->id }}" rel1="{{ route('admins.destroy',$value->id) }}" class="btn servideletebtn" style="color: #dc3545"> <i class="fas fa-times-circle"></i></a>
-{{--                                               لتفعيل المستخدم اذا كان غير مفعل --}}
-                                                <a rel="{{ $value->id }}" rel1="{{ route('admins.destroy',$value->id) }}" class="btn servideletebtn" style="color: rgba(128,236,61,0.53)"> <i class="fas fa-check-circle"></i> </a>
+
+                                            @if($value->admin_state==0)
+                                                <a rel="{{ $value->id }}" rel1="{{ url('/active/'.$value->id) }}" class="btn active" style="color: rgba(128,236,61,0.53)"> <i class="fas fa-check-circle"></i> </a>
+                                            @endif
+
+                                            @if($value->admin_state==1)
+                                                <a rel="{{ $value->id }}" rel1="{{ route('admins.destroy',$value->id) }}" class="btn deactivate" style="color: #dc3545"> <i class="fas fa-times-circle"></i></a>
+                                            @endif
 
                                         </td>
                                     </tr>
+
+                                @endif
 
 
                                 @endforeach
 
                                 </tbody>
                             </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
 
 
         </main>
@@ -158,7 +174,7 @@
                     </div>
 
                     <div class="form-group mb-3">
-                        <input required id="employeeId" name="employeeId" type="number" class="form-control" placeholder="الرقم الوظيفي" value="{{old('employeeId')}}" >
+                        <input  required type="text" pattern="\d*" minlength="7"  id="employeeId" name="employeeId"  placeholder="الرقم الوظيفي" class="form-control"  value="{{old('employeeId')}}" >
                         <span class="text-danger">
                                            @error('employeeId')
                             {{$message}}
@@ -261,14 +277,13 @@
 
 
 
-        //Delete
-        $('.servideletebtn').click(function (e){
-            var id = $(this).attr('rel');
+        //Deactivate
+        $('.deactivate').click(function (e){
             var deleteFunction = $(this).attr('rel1');
             e.preventDefault();
             swal({
-                title: "هل انت متأكد من حذف هذا المستخدم ؟",
-                text: "بمجرد حذف هذا المستخدم لن يتمكن مجددا من دخوا النظام !",
+                title: " متأكد أنك تريد إلغاء تفعيل هذا المستخدم ؟",
+                text: "بمجرد إلغاء تفعيل هذا المستخدم لن يتمكن مجددا من دخول النظام",
                 icon: "warning",
                 buttons: true,
                 dangerMode: true,
@@ -290,6 +305,48 @@
                                     })
                                         .then((result)=>{
                                            location.reload();
+                                        });
+                                },
+                                error: function(xhr)
+                                {
+                                }
+                            });
+                    }
+
+                });
+        });
+
+
+        //activate
+        $('.active').click(function (e){
+
+            var activeFunction = $(this).attr('rel1');;
+
+            e.preventDefault();
+            swal({
+                title: " متأكد أنك تريد  تفعيل هذا المستخدم ؟",
+                text: "بمجرد  تفعيل هذا المستخدم سيتمكن مجددا من دخول النظام",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete)
+                    {
+
+                        $.ajax(
+                            {
+
+                                type: 'GET',
+                                url: activeFunction,
+                                data: data,
+                                success: function (response)
+                                {
+                                    swal(response.status, {
+                                        icon: "success",
+                                    })
+                                        .then((result)=>{
+                                            location.reload();
                                         });
                                 },
                                 error: function(xhr)

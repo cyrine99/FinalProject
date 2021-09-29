@@ -24,6 +24,9 @@ Route::namespace('Admin')->group(function ()
     //Register Users
     Route::resource('admins', RegisterController::class);
 
+    Route::get('active/{id}', 'RegisterController@active')->name('active');
+
+
 
     //ParamedicsUi
     Route::resource('paramedics',ParamedicsController::class);
@@ -54,8 +57,8 @@ Route::middleware('AuthCheck')->group(function () {
     Route::get('RequsetsNotAccept', 'ExitPermissionRequestController@RequsetsNotAccept')->name('RequsetsNotAccept');
     Route::get('AllRequsets', 'ExitPermissionRequestController@AllRequsets')->name('AllRequsets');
     Route::get('AllRequestBody', 'ExitPermissionRequestController@AllRequestBody')->name('AllRequestBody');
-    Route::get('CancelRequest/{id}/{id_patient}', 'ExitPermissionRequestController@CancelRequest')->name('CancelRequest');
-    Route::get('OkRequest/{id}/{id_patient}', 'ExitPermissionRequestController@OkRequest')->name('OkRequest');
+    Route::get('CancelRequest/{id}/{id_patient}/{id_admin}', 'ExitPermissionRequestController@CancelRequest')->name('CancelRequest');
+    Route::get('OkRequest/{id}/{id_patient}/{id_admin}', 'ExitPermissionRequestController@OkRequest')->name('OkRequest');
 
     Route::get('balags/{state}','BalagController@balags')->name('balags');
     Route::get('paramedic_name/{id}','BalagController@paramedic_name')->name('paramedic_name');

@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 use  Illuminate\Routing\Controller;
 
+use Illuminate\Support\Facades\DB;
+
+
 //نقوم بتحميل المودل للعمل عل الجدول
 use App\Models\AdminModel;
 
@@ -71,29 +74,71 @@ class RegisterController extends Controller
 
     public function update(Request $request,$id)
     {
-        $request->validate(
-            [
-                'firstname'=>'required',
-                'lastname'=>'required',
-                'employeeId'=>'required|min:7',
-                'email'=>'required|email',
-                'userType'=>'required',
-            ]
-        );
 
         $admin=AdminModel::find($id);
-        $admin->firstname=$request->firstname;
-        $admin->lastname=$request->lastname;
-        $admin->employeeId=$request->employeeId;
-        $admin->email=$request->email;
-        $admin->userType=$request->userType;
 
-        $update=$admin->save();
-
-
-        if($update)
+        if ($admin->employeeId!=$request->employeeId)
         {
-            return back()->with('success','تم تعديل المستخدم بنجاح');
+            $userInfo=AdminModel::where('employeeId','=',$request->employeeId)->first();
+
+            if($userInfo)
+            {
+                return back()->with('fail','الرقم الوظيفي مكرر!!');
+            }
+            else {
+
+                $admin->firstname = $request->firstname;
+                $admin->lastname = $request->lastname;
+                $admin->employeeId = $request->employeeId;
+                $admin->email = $request->email;
+                $admin->userType = $request->userType;
+
+                $update = $admin->save();
+
+
+                if ($update) {
+
+                    return back()->with('success', 'تم تعديل المستخدم بنجاح');
+                } else {
+                    return back()->with('fail', 'هناك مشكلة ما ! ارجوا المحاولة لاحقا');
+                }
+            }
+
+        }
+        else {
+
+            $admin->firstname = $request->firstname;
+            $admin->lastname = $request->lastname;
+            $admin->employeeId = $request->employeeId;
+            $admin->email = $request->email;
+            $admin->userType = $request->userType;
+
+            $update = $admin->save();
+
+
+            if ($update) {
+
+                return back()->with('success', 'تم تعديل المستخدم بنجاح');
+            } else {
+                return back()->with('fail', 'هناك مشكلة ما ! ارجوا المحاولة لاحقا');
+            }
+        }
+
+
+
+    }
+
+    public function destroy($id)
+    {
+
+        $updateActive= AdminModel::where('id',$id)->update([
+            'admin_state' => 0
+        ]);
+
+
+        if($updateActive)
+        {
+            return response()->json(['status'=>'تم إلغاء تفعيل المستخدم بنجاح']);
         }
         else
         {
@@ -102,13 +147,16 @@ class RegisterController extends Controller
 
     }
 
-    public function destroy($id)
+    public function active($id)
     {
-        $delete=AdminModel::find($id)->delete();
+        $updateActive= AdminModel::where('id',$id)->update([
+            'admin_state' => 1
+        ]);
 
-        if($delete)
+
+        if($updateActive)
         {
-            return response()->json(['status'=>'تم حذف المستخدم بنجاح']);
+            return response()->json(['status'=>'تم  تفعيل المستخدم بنجاح']);
         }
         else
         {

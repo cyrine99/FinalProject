@@ -39,12 +39,18 @@ class MainController extends Controller
 
       $userInfo=AdminModel::where('employeeId','=',$request->employeeId)->first();
 
+
       if(!$userInfo)
       {
           return back()->with('fail','الرقم الوظيفي غير صحيح');
       }
       else
       {
+          if($userInfo->admin_state==0)
+          {
+              return back()->with('fail','تم إلغاء تفعيلك مسبقا !!');
+          }
+
           if(Hash::check($request->password,$userInfo->password))
           {
               $request->session()->put('LoggedUser',$userInfo->id);

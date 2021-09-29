@@ -39,13 +39,13 @@
 
 
 
-        <main class="dash-content">
+        <main class="dash-content"  style="background-color: rgb(255,255,255)">
 
-            <div class="row justify-content-center"  >
-                <div class="col-md-12 col-lg-10"   >
-                    <div class="col-md-12 wrap d-md-flex"  style="background-color: #fff" >
+{{--            <div class="row justify-content-center"  >--}}
+{{--                <div class="col-md-12 col-lg-10"   >--}}
+{{--                    <div class="col-md-12 wrap d-md-flex"  style="background-color: #fff" >--}}
 
-                        <div dir="ltr" class="col-md-12 table-responsive" >
+{{--                        <div dir="ltr" class="col-md-12 table-responsive" >--}}
                             <br>
                             @if(Session::get('success'))
                                 <div class="alert alert-success">
@@ -174,10 +174,10 @@
 
                             @endif
 
-                        </div>
-                    </div>
-                </div>
-            </div>
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
 
 
         </main>

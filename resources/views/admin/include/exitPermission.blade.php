@@ -93,14 +93,37 @@
 
                                                 @if($permissionData->request_state ==0)
 
-                                                        <a href="{{ url('/OkRequest/'.$permissionData->id.'/'.$permissionData->patient_id ) }}"  class="btn btn-success"><i style="margin: 10px" class="fas fa-check-circle"></i>قبول</a>
-                                                        <a href="{{ url('/CancelRequest/'.$permissionData->id.'/'.$permissionData->patient_id ) }}" class="btn btn-danger"><i style="margin: 10px" class="fas fa-frown"></i>رفض</a>
+                                                        <a href="{{ url('/OkRequest/'.$permissionData->id.'/'.$permissionData->patient_id.'/'.$LoggedInfo->id ) }}"  class="btn btn-success"><i style="margin: 10px" class="fas fa-check-circle"></i>قبول</a>
+                                                        <a href="{{ url('/CancelRequest/'.$permissionData->id.'/'.$permissionData->patient_id.'/'.$LoggedInfo->id ) }}" class="btn btn-danger"><i style="margin: 10px" class="fas fa-frown"></i>رفض</a>
 
-                                                @else
-                                                        <h1  style="text-align: center;color: #adb5bd">تم الرد على هذا التصريح من قبل</h1>
+                                                @endif
+
+                                                @if($permissionData->request_state ==1)
+                                                        <h1  style="text-align: center;color: #adb5bd">
+                                                            تم الرد على هذا التصريح  من المستخدم
+                                                            <br>
+                                                            <h1 style="color: #218838">
+                                                                <i style="margin: 10px" class="fas fa-check-circle"></i> {{$admin_name}}
+                                                            </h1>
+
+                                                        </h1>
                                                         <br>
                                                         <br>
                                                 @endif
+
+
+                                            @if($permissionData->request_state ==-1)
+                                                <h1  style="text-align: center;color: #adb5bd">
+                                                    تم الرد على هذا التصريح  من المستخدم
+                                                    <br>
+                                                    <h1 style="color: #e2323a">
+                                                        <i style="margin: 10px" class="fas fa-frown"></i> {{$admin_name}}
+                                                    </h1>
+
+                                                </h1>
+                                                <br>
+                                                <br>
+                                            @endif
 
 
 
