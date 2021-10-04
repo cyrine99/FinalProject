@@ -100,7 +100,7 @@
                                     <tbody>
                                     @foreach($balags as $value)
                                         <td >{{$value->id}}</td>
-                                        <td >{{$value->paramedic_id}}</td>
+                                        <td >{{$value->firstname}}  {{$value->father_name}}   {{$value->grand_name}}  {{$value->lastname}} </td>
                                         {{--                                        <td >{{$value->firstname}}  {{$value->father_name}}   {{$value->grand_name}}  {{$value->lastname}} </td>--}}
                                         <td >{{$value->time_accept_task}}</td>
                                         </tr>
@@ -128,7 +128,7 @@
                                     <tbody>
                                     @foreach($balags as $value)
                                         <td >{{$value->id}}</td>
-                                        <td >{{$value->paramedic_id }}</td>
+                                        <td >{{$value->firstname}}  {{$value->father_name}}   {{$value->grand_name}}  {{$value->lastname}} </td>
                                         <td >{{$value->time_accept_task}}</td>
                                         <td >{{$value->time_access_location}}</td>
                                         <td >{{$value->relief_details}}</td>
@@ -203,92 +203,10 @@
 
 <script>
     $(document).ready(function(){
-        var data= {
-            _token: '{{csrf_token()}}',
-        };
 
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        //Update
+
         var table= $('#datatable').DataTable();
 
-        $('.edit').click(function (e)
-        {
-            var EditFunction = $(this).attr('rel1');
-
-            $tr=$(this).closest('tr');
-            if($($tr).hasClass('child'))
-            {
-                $tr=$tr.prev('.parent');
-            }
-            var oldData=table.row($tr).data();
-            //console.log(oldData);
-
-            $('#UserId').val(oldData[0]);
-            $('#firstname').val(oldData[1]);
-            $('#lastname').val(oldData[2]);
-            $('#employeeId').val(oldData[3]);
-            if(oldData[4]=="مدير نظام")
-            {
-                $('#userType').val(1);
-
-            }
-            else
-            {
-                $('#userType').val(2);
-
-            }
-            $('#email').val(oldData[5]);
-
-            $('#editForm').attr('action',EditFunction);
-
-            $('#editModal').modal('show');
-        });
-
-
-
-        //Delete
-        $('.servideletebtn').click(function (e){
-            var id = $(this).attr('rel');
-            var deleteFunction = $(this).attr('rel1');
-            e.preventDefault();
-            swal({
-                title: "هل انت متأكد من حذف هذا المستخدم ؟",
-                text: "بمجرد حذف هذا المستخدم لن يتمكن مجددا من دخوا النظام !",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
-            })
-                .then((willDelete) => {
-                    if (willDelete)
-                    {
-
-                        $.ajax(
-                            {
-
-                                type: 'DELETE',
-                                url: deleteFunction,
-                                data: data,
-                                success: function (response)
-                                {
-                                    swal(response.status, {
-                                        icon: "success",
-                                    })
-                                        .then((result)=>{
-                                            location.reload();
-                                        });
-                                },
-                                error: function(xhr)
-                                {
-                                }
-                            });
-                    }
-
-                });
-        });
     });
 </script>
 

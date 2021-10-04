@@ -31,9 +31,16 @@
             </div>
         </div>
 
+        <div class="dash-nav-dropdown ">
+            <a href="#!" class="dash-nav-item dash-nav-dropdown-toggle">
+                <i class="fas fa-hands-helping"></i> التصاريح </a>
+            <div class="dash-nav-dropdown-menu">
+                <a href="{{route('allExitPermissionsRequests')}}" class="dash-nav-dropdown-item"><span style="color:#dc3545;text-decoration: double;font-size: larger" id="unrederRequest"></span>&nbsp&nbsp طلبات التصاريح</a>
+                <a href="{{route('allExitPermission')}}" class="dash-nav-dropdown-item">التصاريح</a>
+            </div>
+        </div>
 
-        <a href="{{route('allExitPermission')}}" class="dash-nav-item">
-            <i class="fas fa-car-side"></i>التصاريح </a>
+
 
 
         <a href="{{route('balagsMain')}}" class="dash-nav-item">

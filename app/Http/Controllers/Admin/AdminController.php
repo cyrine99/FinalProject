@@ -52,7 +52,7 @@ class AdminController extends Controller
     }
     public function allExitPermission()
     {
-        $data['AllRequestBody']= ExitPermissionRequert::orderByRaw('created_at DESC')->get();
+        $data['AllRequestBody']= ExitPermissionRequert::where('request_state','<>',0)->orderByRaw('created_at DESC')->get();
         $data['LoggedInfo']=AdminModel::where('id','=',session('LoggedUser'))->first();
         return view('admin.include.allExitPermissions',$data);
     }
@@ -66,5 +66,12 @@ class AdminController extends Controller
         $data['LoggedInfo']=AdminModel::where('id','=',session('LoggedUser'))->first();
         $data['AllUsers']=Paramedics::all();
         return view('admin.include.paramedicsUpdateAndDelete',$data);
+    }
+
+    public function  allExitPermissionsRequests()
+    {
+    $data['AllRequestBody']= ExitPermissionRequert::where('request_state','=',0)->get();
+    $data['LoggedInfo']=AdminModel::where('id','=',session('LoggedUser'))->first();
+    return view('admin.include.allExitPermissionsRequests',$data);
     }
 }

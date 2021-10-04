@@ -25,6 +25,9 @@ class ParamedicBalag extends Model
         'other_details'
     ];
 
-
+    public function paramedics()
+    {
+        return $this->belongsTo(Paramedics::class);
+    }
 
 }

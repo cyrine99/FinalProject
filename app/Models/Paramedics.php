@@ -24,4 +24,11 @@ class Paramedics extends Model
         'password',
         'paramedic_state'
     ];
+
+
+    public function paramedicBalag()
+    {
+        return $this->hasMany(ParamedicBalag::class);
+    }
+
 }

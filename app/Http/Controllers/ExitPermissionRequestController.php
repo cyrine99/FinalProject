@@ -62,7 +62,7 @@ class ExitPermissionRequestController extends Controller
     public function AllRequestBody()
     {
         //First 10 requests
-        echo json_encode(ExitPermissionRequert::orderByRaw('created_at DESC')->take(10)->get());
+        echo json_encode(ExitPermissionRequert::where('request_state','=',0)->take(10)->get());
     }
 
 
@@ -71,15 +71,10 @@ class ExitPermissionRequestController extends Controller
     {
         $permissions = DB::table('login_patients')->where('patient_id', $id_patient)->get();
 
-        $update=ExitPermissionRequert::where('id',$id)->update(['request_state' => -1]);
+        $update=ExitPermissionRequert::where('id',$id)->update(['request_state' => -1,'admin_action' =>$id_admin ]);
 
-        $save=DB::table('exitpermission_admins')->insert([
-            'exitpermission_id' => $id,
-            'admin_id' => $id_admin,
-            'state'=>-1
-        ]);
 
-        if($update && $save)
+        if($update)
         {
             foreach($permissions as $key => $value)
             {
@@ -103,15 +98,9 @@ class ExitPermissionRequestController extends Controller
 
         $permissions = DB::table('login_patients')->where('patient_id', $id_patient)->get();
 
-        $update=ExitPermissionRequert::where('id',$id)->update(['request_state' => 1]);
+        $update=ExitPermissionRequert::where('id',$id)->update(['request_state' => 1,'admin_action' =>$id_admin ]);
 
-        $save=DB::table('exitpermission_admins')->insert([
-            'exitpermission_id' => $id,
-            'admin_id' => $id_admin,
-            'state'=>1
-        ]);
-
-        if($update && $save)
+        if($update)
         {
             foreach($permissions as $key => $value)
             {
@@ -216,13 +205,35 @@ class ExitPermissionRequestController extends Controller
     {
         $data['permissionData']= ExitPermissionRequert::find($id);
 
-        $data['admin_name']="nn";
         if($state==1 || $state==-1)
         {
-            $permissionData_exit_admin=DB::table('exitpermission_admins')->where('exitpermission_id', $id)->get();
+
+
+
+            $permissionData_exit_admin=DB::table('exit_permission_requerts')->where('id', $id)->get();
             foreach ($permissionData_exit_admin as $value)
             {
-                $admin_id=$value->admin_id;
+                $admin_id=$value->admin_action;
+
+                if($value->request_state==1)
+                {
+                    $houres_to_add = 5;
+                    $time = new \DateTime( $value->updated_at);
+                    $time->add(new \DateInterval('PT' . $houres_to_add . 'H'));
+                    $stamp = $time->format('Y-m-d H:i');
+
+                    if(date("Y-m-d H:i:s") >= $stamp)
+                    {
+                        $data['stamp']='off';
+                    }
+                    else
+                    {
+                        $data['stamp']='on';
+
+                    }
+
+
+                }
             }
             foreach (DB::table('admin_models')->where('id', $admin_id )->get() as $value)
             {

@@ -116,7 +116,10 @@
                     <div id="modelRequests" class="row">
 
                     </div>
-                    <a style="text-align: center" href="{{route('allExitPermission')}}">عرض كل التصاريح</a>
+
+                    <!-- Thissssssssssssssssssss-->
+                    <a style="text-align: center" href="{{route('allExitPermissionsRequests')}}">عرض كل التصاريح</a>
+
                 </div>
 
 
@@ -222,6 +225,8 @@
                 dataType: 'json',
                 success: function ( data) {
                     $('#unrederRequest').html(data);
+                    $('#unrederRequest2').html(data);
+
                 },
                 error: function ( data ) {
 
@@ -294,7 +299,7 @@
             RequsetsNotAccept();
             AllRequsets();
             RequestWait();
-        }, 3000);
+        }, 1000);
     });
 
 </script>

@@ -41,11 +41,6 @@
 
         <main class="dash-content"  style="background-color: rgb(255,255,255)">
 
-{{--            <div class="row justify-content-center"  >--}}
-{{--                <div class="col-md-12 col-lg-10"   >--}}
-{{--                    <div class="col-md-12 wrap d-md-flex"  style="background-color: #fff" >--}}
-
-{{--                        <div dir="ltr" class="col-md-12 table-responsive" >--}}
                             <br>
                             @if(Session::get('success'))
                                 <div class="alert alert-success">
@@ -70,17 +65,13 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-
                                 @foreach($AllRequestBody as $value)
-                                    @if($value->request_state==1)
-                                        <tr style="background-color: rgba(114,255,151,0.25)">
-                                    @endif
+
+
                                     @if($value->request_state==0)
                                         <tr style="background-color: rgba(255,211,126,0.25)">
                                     @endif
-                                    @if($value->request_state==-1)
-                                        <tr style="background-color: rgba(250,123,123,0.25)">
-                                    @endif
+
                                         <td >{{$value->id}}</td>
                                         <td >{{$value->driver_name}}</td>
                                         <td >{{$value->driver_phone}}</td>
@@ -93,10 +84,7 @@
                                 @endforeach
                                 </tbody>
                             </table>
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
+
 
 
         </main>
@@ -116,6 +104,7 @@
 
 
 @include('Links.body_js')
+
 
 
 <script>

@@ -46,6 +46,10 @@ Route::namespace('Admin')->group(function ()
         Route::get('allExitPermission','AdminController@allExitPermission')->name('allExitPermission');
         Route::get('balagsMain','AdminController@balagsMain')->name('balagsMain');
         Route::get('updateAndDeleteParamedics','AdminController@updateAndDeleteParamedics')->name('updateAndDeleteParamedics');
+        Route::get('allExitPermissionsRequests','AdminController@allExitPermissionsRequests')->name('allExitPermissionsRequests');
+
+
+
 
     });
 
@@ -64,7 +68,7 @@ Route::middleware('AuthCheck')->group(function () {
     Route::get('CancelRequest/{id}/{id_patient}/{id_admin}', 'ExitPermissionRequestController@CancelRequest')->name('CancelRequest');
     Route::get('OkRequest/{id}/{id_patient}/{id_admin}', 'ExitPermissionRequestController@OkRequest')->name('OkRequest');
 
-    Route::get('balags/{state}','BalagController@balags')->name('balags');
+    Route::get('balags/{state}','ParamedicBalagController@balags')->name('balags');
     Route::get('paramedic_name/{id}','BalagController@paramedic_name')->name('paramedic_name');
 
 

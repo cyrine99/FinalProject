@@ -84,7 +84,7 @@
                                                 <br>
 
                                                 <h2 style="background-color: #dafadd" >وقت طلب التصريح</h2>
-                                            <h3> {{$permissionData->date_time_request}}</h3>
+                                            <h3> {{$permissionData->created_at}}</h3>
                                                 <br>
                                                 <br>
 
@@ -109,7 +109,14 @@
                                                         </h1>
                                                         <br>
                                                         <br>
-                                                @endif
+                                                    @if($stamp=='off')
+                                                    <h1 style="color: #dc3545">التصريح منتهي الصلاحية</h1>
+                                                    @endif
+
+                                                    @if($stamp=='on')
+                                                        <h1 style="color: #87aa2a">التصريح قائم </h1>
+                                                    @endif
+                                    @endif
 
 
                                             @if($permissionData->request_state ==-1)
