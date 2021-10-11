@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Admin;
 
 Route::namespace('Main')->group(function ()
 {
@@ -24,20 +25,22 @@ Route::namespace('Admin')->group(function ()
     //Register Users
     Route::resource('admins', RegisterController::class);
 
+
     Route::get('active/{id}', 'RegisterController@active')->name('active');
     Route::get('activeParamedic/{id}', 'ParamedicsController@activeParamedic')->name('activeParamedic');
 
     Route::get('admins_deactivate/{id}', 'RegisterController@admins_deactivate')->name('admins_deactivate');
     Route::get('deactiveParamedic/{id}', 'ParamedicsController@deactiveParamedic')->name('deactiveParamedic');
 
-    //ParamedicsUi
-    Route::resource('paramedics',ParamedicsController::class);
+
 
 
 
     //Admin URL
     Route::middleware('AuthCheck')->group(function ()
     {
+        //ParamedicsUi
+        Route::resource('paramedics',ParamedicsController::class);
         Route::get('register','AdminController@register')->name('register');
         Route::get('dashboard','AdminController@dashboard')->name('dashboard');
         Route::get('addParamedicsUi','AdminController@addParamedicsUi')->name('addParamedicsUi');
@@ -47,9 +50,6 @@ Route::namespace('Admin')->group(function ()
         Route::get('balagsMain','AdminController@balagsMain')->name('balagsMain');
         Route::get('updateAndDeleteParamedics','AdminController@updateAndDeleteParamedics')->name('updateAndDeleteParamedics');
         Route::get('allExitPermissionsRequests','AdminController@allExitPermissionsRequests')->name('allExitPermissionsRequests');
-
-
-
 
     });
 

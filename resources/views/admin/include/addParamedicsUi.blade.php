@@ -3,7 +3,7 @@
 <head>
     @include('Links.head')
     <title >تسجيل مسعف جديد</title>
-{{--Git Hub Test--}}
+    {{--Git Hub Test--}}
 </head>
 <body>
 <div class="dash">
@@ -27,17 +27,18 @@
 
                                 @csrf
 
+
                                 @if(Session::get('success'))
                                     <div class="alert alert-success">
                                         {{Session::get('success')}}
                                     </div>
                                 @endif
 
-                                @if(Session::get('fail'))
-                                    <div class="alert alert-danger">
-                                        {{Session::get('fail')}}
-                                    </div>
-                                @endif
+{{--                                @if(Session::get('fail'))--}}
+{{--                                    <div class="alert alert-danger">--}}
+{{--                                        {{Session::get('fail')}}--}}
+{{--                                    </div>--}}
+{{--                                @endif--}}
 
 
                                 <div class="row">
@@ -107,41 +108,41 @@
 
 
 
-                           <fieldset class="form-group mb-3">
-                               <legend  style="text-align: right;margin-right: 30px">تاريخ الميلاد</legend>
-                               <div class="row">
+                                <fieldset class="form-group mb-3">
+                                    <legend  style="text-align: right;margin-right: 30px">تاريخ الميلاد</legend>
+                                    <div class="row">
 
-                                    <div class="col-md-4 form-group mb-3">
-                                        <select required name="BD_Day" class="form-control" aria-label="Default select example"
-                                                {{--هذه لعمل سكرول للقائمة--}}
-                                                onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
+                                        <div class="col-md-4 form-group mb-3">
+                                            <select required name="BD_Day" class="form-control" aria-label="Default select example"
+                                                    {{--هذه لعمل سكرول للقائمة--}}
+                                                    onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
 
-                                            {{--طريقة التعبائة هنا غير صحيحة !!!!!!!!!! لكن سيتم تصحيحها ان شاء الله .. هنا فقط للتجربة--}}
-                                            <option value="{{old('BD_Day')}}" style="color:#c1c1c1" selected>إختر اليوم</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                            <option value="8">8</option>
-                                            <option value="9">9</option>
-                                            <option value="10">10</option>
-                                        </select>
-                                        <span class="text-danger">
+                                                {{--طريقة التعبائة هنا غير صحيحة !!!!!!!!!! لكن سيتم تصحيحها ان شاء الله .. هنا فقط للتجربة--}}
+                                                <option value="{{old('BD_Day')}}" style="color:#c1c1c1" selected>إختر اليوم</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
+                                            </select>
+                                            <span class="text-danger">
                                             @error('BD_Day')
-                                            {{$message}}
-                                            @enderror
+                                                {{$message}}
+                                                @enderror
                                         </span>
-                                    </div>
+                                        </div>
 
-                                    <div class="col-md-4 form-group mb-3">
-                                        <select required name="BD_Month" class="form-control" aria-label="Default select example"
-                                                onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();' >
+                                        <div class="col-md-4 form-group mb-3">
+                                            <select required name="BD_Month" class="form-control" aria-label="Default select example"
+                                                    onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();' >
 
-                                            {{--طريقة التعبائة هنا غير صحيحة !!!!!!!!!! لكن سيتم تصحيحها ان شاء الله .. هنا فقط للتجربة--}}
-                                                 <option value="{{old('BD_Month')}}" style="color:#c1c1c1" selected>إختر الشهر</option>
+                                                {{--طريقة التعبائة هنا غير صحيحة !!!!!!!!!! لكن سيتم تصحيحها ان شاء الله .. هنا فقط للتجربة--}}
+                                                <option value="{{old('BD_Month')}}" style="color:#c1c1c1" selected>إختر الشهر</option>
                                                 <option value="1">يناير</option>
                                                 <option value="2">فبراير</option>
                                                 <option value="3">مارس</option>
@@ -154,42 +155,42 @@
                                                 <option value="10">أكتوبر</option>
                                                 <option value="11">نوفمبر</option>
                                                 <option value="12">ديسمبر</option>
-                                        </select>
+                                            </select>
 
-                                        <span class="text-danger">
+                                            <span class="text-danger">
                                             @error('BD_Month')
-                                            {{$message}}
-                                            @enderror
+                                                {{$message}}
+                                                @enderror
                                         </span>
-                                    </div>
+                                        </div>
 
 
-                                    <div class="col-md-4 form-group mb-3">
-                                        <select required name="BD_Year" class="form-control" aria-label="Default select example"
-                                                onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
+                                        <div class="col-md-4 form-group mb-3">
+                                            <select required name="BD_Year" class="form-control" aria-label="Default select example"
+                                                    onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
 
-                                            {{--طريقة التعبائة هنا غير صحيحة !!!!!!!!!! لكن سيتم تصحيحها ان شاء الله .. هنا فقط للتجربة--}}
-                                            <option value="{{old('BD_Year')}}" style="color:#c1c1c1" selected>إختر السنة</option>
-                                            <option value="2003">2003</option>
-                                            <option value="2002">2002</option>
-                                            <option value="2001">2001</option>
-                                            <option value="2000">2000</option>
-                                            <option value="1999">1999</option>
-                                            <option value="1998">1998</option>
-                                            <option value="1997">1997</option>
-                                            <option value="1996">1996</option>
-                                            <option value="1995">1995</option>
-                                            <option value="1994">1994</option>
-                                        </select>
-                                        <span class="text-danger">
+                                                {{--طريقة التعبائة هنا غير صحيحة !!!!!!!!!! لكن سيتم تصحيحها ان شاء الله .. هنا فقط للتجربة--}}
+                                                <option value="{{old('BD_Year')}}" style="color:#c1c1c1" selected>إختر السنة</option>
+                                                <option value="2003">2003</option>
+                                                <option value="2002">2002</option>
+                                                <option value="2001">2001</option>
+                                                <option value="2000">2000</option>
+                                                <option value="1999">1999</option>
+                                                <option value="1998">1998</option>
+                                                <option value="1997">1997</option>
+                                                <option value="1996">1996</option>
+                                                <option value="1995">1995</option>
+                                                <option value="1994">1994</option>
+                                            </select>
+                                            <span class="text-danger">
                                             @error('BD_Year')
-                                            {{$message}}
-                                            @enderror
+                                                {{$message}}
+                                                @enderror
                                         </span>
 
 
+                                        </div>
                                     </div>
-                                   </div>
                                 </fieldset>
 
                                 <div class="form-group mb-3">
@@ -206,7 +207,7 @@
 
                                 <fieldset class="form-group">
                                     <legend  style="text-align: right;margin-right: 30px">بيانات الدخول</legend>
-                                     <div class="row">
+                                    <div class="row">
                                         <div class="col-md-12 form-group mb-3">
                                             <input required name="username" type="text" class="form-control" placeholder="اسم المستخدم"  value="{{old('username')}}">
                                             <span class="text-danger">
