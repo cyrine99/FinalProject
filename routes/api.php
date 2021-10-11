@@ -112,4 +112,9 @@ Route::get('deleteTokenUser/{id}/{token}','LoginPatientController@deleteTokenUse
 Route::get('cancelBalag/{id_Balag}/{id_patient}/{state}','BalagController@cancelBalag');
 
 
+/************************/
+Route::post('update','ParamedicsControllerAPI@update');
+Route::get('balagsForParamedics/{id}/{state}','ParamedicsControllerAPI@balagsForParamedics');
+
+
 
