@@ -119,16 +119,13 @@ class ParamedicBalagController extends Controller
 
         if($state==1)
         {
-            $data['balags'] = DB::select(' SELECT paramedic_balags.id ,  paramedics.firstname,paramedics.father_name ,paramedics.grand_name,paramedics.lastname,paramedic_balags.time_accept_task FROM paramedic_balags,paramedics WHERE paramedic_balags.balag_state=1 and paramedic_balags.paramedic_id=paramedics.id');
+            $data['balags'] = DB::select(' SELECT paramedic_balags.id,paramedic_balags.created_at,  paramedics.firstname,paramedics.father_name ,paramedics.grand_name,paramedics.lastname,paramedic_balags.time_accept_task FROM paramedic_balags,paramedics WHERE paramedic_balags.balag_state=1 and paramedic_balags.paramedic_id=paramedics.id');
         }
         if($state==2)
         {
-            $data['balags'] = DB::select(' SELECT paramedic_balags.id , paramedics.firstname,paramedics.father_name ,paramedics.grand_name,paramedics.lastname,paramedic_balags.time_accept_task,paramedic_balags.time_access_location, paramedic_balags.relief_details,paramedic_balags.hospital_name,paramedic_balags.other_details FROM paramedic_balags,paramedics WHERE paramedic_balags.balag_state=2 and paramedic_balags.paramedic_id=paramedics.id');
+            $data['balags'] = DB::select(' SELECT paramedic_balags.id ,paramedic_balags.updated_at,paramedic_balags.created_at,paramedics.firstname,paramedics.father_name ,paramedics.grand_name,paramedics.lastname,paramedic_balags.time_accept_task,paramedic_balags.time_access_location, paramedic_balags.relief_details,paramedic_balags.hospital_name,paramedic_balags.other_details FROM paramedic_balags,paramedics WHERE paramedic_balags.balag_state=2 and paramedic_balags.paramedic_id=paramedics.id ORDER BY created_at DESC');
         }
-        if($state==-1)
-        {
-            $data['balags'] = DB::select(' SELECT paramedic_balags.id , paramedics.firstname,paramedics.father_name ,paramedics.grand_name,paramedics.lastname,paramedic_balags.time_deny_task,paramedic_balags.reasons_for_rejection, paramedic_balags.notes_reasons_for_rejection FROM paramedic_balags,paramedics WHERE paramedic_balags.balag_state=-1 and paramedic_balags.paramedic_id=paramedics.id');
-        }
+
         $data['LoggedInfo']=AdminModel::where('id','=',session('LoggedUser'))->first();
         return view('admin.include.balags',$data);
     }

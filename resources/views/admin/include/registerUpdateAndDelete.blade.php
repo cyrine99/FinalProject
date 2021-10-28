@@ -73,9 +73,6 @@
                                 <tbody>
                                 @foreach ($AllUsers as $value)
 
-                                    @if($LoggedInfo->id==$value->id)
-
-                                    @else
 
                                     @if($value->admin_state==0)
                                         <tr style="background-color: rgba(173,181,189,0.36)">
@@ -105,8 +102,6 @@
 
                                         </td>
                                     </tr>
-
-                                @endif
 
 
                                 @endforeach

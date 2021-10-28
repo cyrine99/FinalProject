@@ -59,33 +59,6 @@
                                 </div>
                             @endif
 
-                            @if($state_number==-1)
-
-                                <p>المرفوضة</p>
-                                <table  dir="rtl"  style="text-align: center;" id="datatable" class="table table-hover table-fixed"  >
-                                    <thead>
-                                    <tr>
-                                        <th >No.</th>
-                                        <th >اسم المسعف</th>
-                                        <th >وقت رفض المهمة</th>
-                                        <th >سبب الرفض</th>
-                                        <th >ملاحظات</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    @foreach($balags as $value)
-                                        <td >{{$value->id}}</td>
-                                        <td >{{$value->firstname}}  {{$value->father_name}}   {{$value->grand_name}}  {{$value->lastname}} </td>
-                                        <td >{{$value->time_deny_task}}</td>
-                                        <td >{{$value->reasons_for_rejection}}</td>
-                                        <td >{{$value->notes_reasons_for_rejection}}</td>
-                                        </tr>
-                                    @endforeach
-                                    </tbody>
-                                </table>
-
-                            @endif
-
                             @if($state_number==1)
 
                                 <p>المرفوضة</p>
@@ -101,8 +74,7 @@
                                     @foreach($balags as $value)
                                         <td >{{$value->id}}</td>
                                         <td >{{$value->firstname}}  {{$value->father_name}}   {{$value->grand_name}}  {{$value->lastname}} </td>
-                                        {{--                                        <td >{{$value->firstname}}  {{$value->father_name}}   {{$value->grand_name}}  {{$value->lastname}} </td>--}}
-                                        <td >{{$value->time_accept_task}}</td>
+                                        <td >{{$value->created_at}}</td>
                                         </tr>
                                     @endforeach
                                     </tbody>
@@ -120,6 +92,7 @@
                                         <th >اسم المسعف</th>
                                         <th >وقت قبول المهمة</th>
                                         <th >وقت وصول موقع الحالة</th>
+                                        <th >وقت إغلاق المهمة</th>
                                         <th >الإسعافات</th>
                                         <th >اسم المستشفى</th>
                                         <th >تفاصيل اخرى</th>
@@ -129,8 +102,9 @@
                                     @foreach($balags as $value)
                                         <td >{{$value->id}}</td>
                                         <td >{{$value->firstname}}  {{$value->father_name}}   {{$value->grand_name}}  {{$value->lastname}} </td>
-                                        <td >{{$value->time_accept_task}}</td>
+                                        <td >{{$value->created_at}}</td>
                                         <td >{{$value->time_access_location}}</td>
+                                        <td >{{$value->updated_at}}</td>
                                         <td >{{$value->relief_details}}</td>
                                         <td >{{$value->hospital_name}}</td>
                                         <td >{{$value->other_details}}</td>
@@ -154,7 +128,7 @@
                                         <th >وصف الموقع</th>
                                         <th >عدد الأشخاص</th>
                                         <th >رقم الهاتف</th>
-                                        <th >وقت البلاغ</th>
+                                        <th >وقت طلب البلاغ</th>
                                         <th >تفاصيل اخرى</th>
                                     </tr>
                                     </thead>

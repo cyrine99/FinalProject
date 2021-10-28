@@ -208,8 +208,6 @@ class ExitPermissionRequestController extends Controller
         if($state==1 || $state==-1)
         {
 
-
-
             $permissionData_exit_admin=DB::table('exit_permission_requerts')->where('id', $id)->get();
             foreach ($permissionData_exit_admin as $value)
             {
