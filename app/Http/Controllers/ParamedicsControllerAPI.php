@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
+
 class ParamedicsControllerAPI extends Controller
 {
 
@@ -39,6 +40,8 @@ class ParamedicsControllerAPI extends Controller
             'BD_Day'=>'required',
             'BD_Month'=>'required',
             'BD_Year'=>'required',
+            'city'=>'required',
+            'area'=>'required',
             'IDnumber'=>'required|max:50|unique:Paramedics',
             'username'=>'required|max:50|unique:Paramedics',
             'password'=>'required|min:5|max:12',
@@ -55,6 +58,8 @@ class ParamedicsControllerAPI extends Controller
         $paramedic->BD_Day=$request->BD_Day;
         $paramedic->BD_Month=$request->BD_Month;
         $paramedic->BD_Year=$request->BD_Year;
+        $paramedic->city=$request->city;
+        $paramedic->area=$request->area;
         $paramedic->IDnumber=$request->IDnumber;
         $paramedic->username=$request->username;
         $paramedic->password=Hash::make($request->password);
@@ -72,6 +77,21 @@ class ParamedicsControllerAPI extends Controller
 
     }
 
+
+
+    public function show(Paramedics $paramedics)
+    {
+        //
+    }
+
+
+ 
+
+
+    public function destroy(Paramedics $paramedics)
+    {
+        //
+    }
 
     public function checkLogin (Request $request)
     {
@@ -95,13 +115,35 @@ class ParamedicsControllerAPI extends Controller
             }
         }
     }
-
-
-    public function update(Request $request)
+    
+    
+     public function update(Request $request)
     {
         $paramedic=Paramedics::find($request->id);
 
         $pass=$request->passwordOld;
+        
+        
+        //نسيت كلمة المرور
+           if ($request->state==0)
+            {
+                $update= Paramedics::where('id',$request->id)->update([
+                    'password' =>Hash::make($request->passwordNew)
+                ]);
+                
+                   if($update)
+                    {
+                        return response()->json($request,200);
+                    }
+                    else
+                    {
+                        return response()->json('لم يتم التعديل',400);
+                    }
+                    
+                    return;
+            }
+
+           
 
         if (Hash::check($pass,$paramedic->password))
         {
@@ -144,17 +186,36 @@ class ParamedicsControllerAPI extends Controller
     {
         if($state==2)
         {
-            $data= DB::select(' SELECT paramedic_balags.id , paramedics.firstname,paramedics.father_name ,paramedics.grand_name,paramedics.lastname,paramedic_balags.time_accept_task,paramedic_balags.time_access_location, paramedic_balags.relief_details,paramedic_balags.hospital_name,paramedic_balags.other_details FROM paramedic_balags,paramedics WHERE paramedic_balags.balag_state=2 and paramedic_balags.paramedic_id='.$id.' and  paramedics.id='.$id);
+            $data= DB::select(' SELECT paramedic_balags.id ,paramedic_balags.created_at,paramedic_balags.updated_at,paramedics.firstname,paramedics.father_name ,paramedics.grand_name,paramedics.lastname,paramedic_balags.time_accept_task,paramedic_balags.time_access_location, paramedic_balags.relief_details,paramedic_balags.hospital_name,paramedic_balags.other_details FROM paramedic_balags,paramedics WHERE paramedic_balags.balag_state=2 and paramedic_balags.paramedic_id='.$id.' and  paramedics.id='.$id);
         }
 
         if($data)
         {
             return response()->json($data,200);
         }
+        if(empty($data))
+        {
+            return response()->json('هناك خطأ او لا يوجد بيانات',400); 
+        }
         else
         {
-            return response()->json('هناك خطأ او لا يوجد بيانات',400);
+            return response()->json('هناك خطأ او لا يوجد بيانات',500);
         }
 
     }
+    
+    
+        public function showDataForParamedic($phone)
+    {
+        $data =DB::table('paramedics')->where('phone', $phone)->get() ;
+        if($data)
+        {
+            return response()->json($data,200);
+        }
+        else
+        {
+            return response()->json('Error',400);
+        }
+    }
+
 }

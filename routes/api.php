@@ -93,7 +93,7 @@ Route::resource('ParamedicLogin',LoginParamedicController::class);
 
 
 //API For insert ParamedicLogin Tokens
-Route::get('deletToken/{id}/{token}','LoginParamedicController@destroy');
+Route::get('deleteToken/{id}/{token}','LoginParamedicController@destroy');
 
 /*************/
 //API For chick  MedicalHistory For user
@@ -113,8 +113,10 @@ Route::get('cancelBalag/{id_Balag}/{id_patient}/{state}','BalagController@cancel
 
 
 /************************/
-Route::post('update','ParamedicsControllerAPI@update');
+Route::post('updateDataForParamedic','ParamedicsControllerAPI@update');
 Route::get('balagsForParamedics/{id}/{state}','ParamedicsControllerAPI@balagsForParamedics');
 
+/**************/
+Route::get('showDataForParamedic/{phone}','ParamedicsControllerAPI@showDataForParamedic');
 
 
