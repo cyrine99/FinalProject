@@ -1,23 +1,7 @@
 <meta name="csrf-token" content="{{ csrf_token() }}" />
 <header class="dash-toolbar">
-    <a href="#!" class="menu-toggle">
-        <i class="fas fa-bars"></i>
-    </a>
 
-    <h5 class="col-md-6" style="text-align: right">
-      جمعية الهلال الاحمر الليبي
-    </h5>
-    <div class="tools">
-
-
-
-        <a id="notify-comet"  data-toggle="modal" data-target="#exampleModal" class="tools-item">
-            <i style="cursor: pointer" class="fas fa-bell"></i>
-            <i id="not-count"  class="tools-item-count"></i>
-        </a>
-
-
-
+    <div class="col-md-2 tools">
 
 
         @include('Links.body_js')
@@ -31,8 +15,24 @@
             </div>
         </div>
 
+        <a id="notify-comet"  data-toggle="modal" data-target="#exampleModal" class="tools-item">
+            <i style="cursor: pointer" class="fas fa-bell"></i>
+            <i id="not-count"  class="tools-item-count"></i>
+        </a>
+
+
+
+
 
     </div>
+
+    <h5 class="col-md-10" style="text-align: center">
+      جمعية الهلال الاحمر الليبي
+    </h5>
+
+    <a href="#!" class="menu-toggle">
+        <i class="fas fa-bars"></i>
+    </a>
 </header>
 
 

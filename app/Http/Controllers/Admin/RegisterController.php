@@ -22,11 +22,7 @@ class RegisterController extends Controller
     {
     }
 
-        public function index()
-        {
-           $users= AdminModel::all();
-          // info($users);
-        }
+
     public function store(Request $request,AdminModel $admin)
     {
         $request->validate(
@@ -72,10 +68,10 @@ class RegisterController extends Controller
         //  return view('',$adminModel);
     }
 
-    public function update(Request $request,$id)
+    public function update(Request $request)
     {
 
-        $admin=AdminModel::find($id);
+        $admin=AdminModel::find($request->UserId);
 
         if ($admin->employeeId!=$request->employeeId)
         {

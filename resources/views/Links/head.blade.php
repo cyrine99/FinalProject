@@ -8,7 +8,7 @@
 <script src="{{URL::asset('js/chart-js-config.js')}}"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-
+<link rel="shortcut icon" type="image/png" href="{{URL::asset('images/almusajibfLogo.png')}}" />
 
 <style>
     @font-face {

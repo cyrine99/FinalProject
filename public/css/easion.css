@@ -8989,9 +8989,9 @@ body {
   margin-top: 84px; }
   @media (min-width: 992px) {
     .dash-app {
-      margin-left: 238px; }
+      margin-right: 238px; }
       .dash-compact .dash-app {
-        margin-left: 0; } }
+        margin-right: 0; } }
 
 .dash-content {
   -webkit-box-flex: 2;
@@ -9060,7 +9060,7 @@ body {
 .dash-nav {
   min-width: 238px;
   position: fixed;
-  left: 0;
+  right: 0;
   top: 0;
   bottom: 0;
   overflow: auto; }
@@ -9106,7 +9106,7 @@ body {
           display: flex; } }
     .dash-nav header .easion-logo {
       margin-right: auto;
-      padding-right: 42px; }
+      padding-left: 60px; }
   .dash-nav a {
     color: #515151; }
     .dash-nav a:hover {
@@ -9142,6 +9142,7 @@ body {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+    direction: rtl;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -webkit-flex-direction: column;
@@ -9150,7 +9151,7 @@ body {
 
 .dash-nav-item {
   min-height: 56px;
-  padding: 8px 20px 8px 70px;
+  padding: 8px 70px 8px 20px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -9163,7 +9164,8 @@ body {
   .dash-nav-item i {
     width: 36px;
     font-size: 19px;
-    margin-left: -40px; }
+    margin-right: -40px;
+  padding-left: 10px;}
   .dash-nav-dark .dash-nav-item:hover {
     background: #fccb6f}
 
@@ -9195,7 +9197,7 @@ body {
 
 .dash-nav-dropdown-toggle:after {
   content: "";
-  margin-left: auto;
+  margin-right: auto;
   display: inline-block;
   width: 0;
   height: 0;
@@ -9345,9 +9347,9 @@ body {
   z-index: 1000; }
   @media (min-width: 992px) {
     .dash-toolbar {
-      left: 238px; }
+      right: 238px; }
       .dash-compact .dash-toolbar {
-        left: 0; } }
+        right: 0; } }
 
 .searchbox {
   display: -webkit-box;
