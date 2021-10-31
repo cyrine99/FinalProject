@@ -147,12 +147,21 @@ class ParamedicsControllerAPI extends Controller
 
         if (Hash::check($pass,$paramedic->password))
         {
+ 		
             //Only Username
             if($request->state==1)
             {
                 $update= Paramedics::where('id',$request->id)->update([
                     'username' =>$request->username,
                 ]);
+		 if($update)
+          	{
+                return response()->json($request,200);
+            	}
+            	else
+            	{
+                 return response()->json('لم يتم التعديل',400);
+            	}
 
             }
 
@@ -163,21 +172,23 @@ class ParamedicsControllerAPI extends Controller
                     'username' =>$request->username,
                     'password' =>Hash::make($request->passwordNew)
                 ]);
+
+ 		if($update)
+          	{
+                return response()->json($request,200);
+            	}
+            	else
+            	{
+                	return response()->json('لم يتم التعديل',400);
+            	}
             }
 
-            if($update)
-            {
-                return response()->json($request,200);
-            }
-            else
-            {
-                return response()->json('لم يتم التعديل',400);
-            }
+           
 
         }
         else
         {
-            return response()->json('الرمز السري القديم غير صحيح',400);
+            return response()->json('الرمز السري القديم غير صحيح',404);
         }
     }
 

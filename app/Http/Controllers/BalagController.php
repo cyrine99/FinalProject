@@ -44,10 +44,9 @@ class BalagController extends Controller
 
         $store=Balag::create($request->all());
 
-        if($store) {
-
-              $balagNoty = DB::table('login_paramedics')->where('ready_or_not',1)->get();
-
+        if($store) 
+	{
+		$balagNoty=DB::select(' SELECT login_paramedics.token,paramedics.ready_or_not FROM login_paramedics,paramedics WHERE 											 login_paramedics.id_paramedic=paramedics.id and paramedics.ready_or_not=1');
             foreach($balagNoty as $key => $value)
             {
                   $this->sendNoty($value->token,'هل أنت جاهز ؟!','أحد المستخدمين قام بطلب المساعدة , شاهد قائمة البلاغات ربما يكون المستخدم قريب منك !');
@@ -66,7 +65,7 @@ class BalagController extends Controller
 
     public function showForUser($id,$state)
     {
-        $data =DB::table('balags')->where('id_patient', $id)->where('balag_state',$state)->orderByRaw('created_at DESC')->get() ;
+        $data = DB::table('balags')->where('id_patient', $id)->where('balag_state',$state)->orderByRaw('created_at DESC')->get() ;
         if($data)
         {
             return response()->json($data,200);
