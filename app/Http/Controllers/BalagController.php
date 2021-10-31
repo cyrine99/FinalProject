@@ -46,7 +46,7 @@ class BalagController extends Controller
 
         if($store) {
 
-              $balagNoty = DB::table('login_paramedics')->get();
+              $balagNoty = DB::table('login_paramedics')->where('ready_or_not',1)->get();
 
             foreach($balagNoty as $key => $value)
             {

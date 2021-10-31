@@ -85,7 +85,7 @@ class ParamedicsControllerAPI extends Controller
     }
 
 
- 
+
 
 
     public function destroy(Paramedics $paramedics)
@@ -115,22 +115,22 @@ class ParamedicsControllerAPI extends Controller
             }
         }
     }
-    
-    
+
+
      public function update(Request $request)
     {
         $paramedic=Paramedics::find($request->id);
 
         $pass=$request->passwordOld;
-        
-        
+
+
         //نسيت كلمة المرور
            if ($request->state==0)
             {
                 $update= Paramedics::where('id',$request->id)->update([
                     'password' =>Hash::make($request->passwordNew)
                 ]);
-                
+
                    if($update)
                     {
                         return response()->json($request,200);
@@ -139,11 +139,11 @@ class ParamedicsControllerAPI extends Controller
                     {
                         return response()->json('لم يتم التعديل',400);
                     }
-                    
+
                     return;
             }
 
-           
+
 
         if (Hash::check($pass,$paramedic->password))
         {
@@ -195,7 +195,7 @@ class ParamedicsControllerAPI extends Controller
         }
         if(empty($data))
         {
-            return response()->json('هناك خطأ او لا يوجد بيانات',400); 
+            return response()->json('هناك خطأ او لا يوجد بيانات',400);
         }
         else
         {
@@ -203,8 +203,8 @@ class ParamedicsControllerAPI extends Controller
         }
 
     }
-    
-    
+
+
         public function showDataForParamedic($phone)
     {
         $data =DB::table('paramedics')->where('phone', $phone)->get() ;
@@ -218,4 +218,28 @@ class ParamedicsControllerAPI extends Controller
         }
     }
 
+    public function ready_or_not(Request  $request)
+    {
+        if($request->state==0)
+        {
+            $update= Paramedics::where('id',$request->id)->update([
+                'ready_or_not' =>0
+            ]);
+        }
+        else
+        {
+            $update= Paramedics::where('id',$request->id)->update([
+                'ready_or_not' =>1
+            ]);
+        }
+
+        if($update)
+        {
+            return response()->json($update,200);
+        }
+        else
+        {
+            return response()->json('Error',400);
+        }
+    }
 }

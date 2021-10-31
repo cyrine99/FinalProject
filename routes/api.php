@@ -120,3 +120,7 @@ Route::get('balagsForParamedics/{id}/{state}','ParamedicsControllerAPI@balagsFor
 Route::get('showDataForParamedic/{phone}','ParamedicsControllerAPI@showDataForParamedic');
 
 
+/**********/
+
+Route::post('ready_or_not','ParamedicsControllerAPI@ready_or_not');
+
