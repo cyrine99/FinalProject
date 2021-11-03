@@ -74,4 +74,14 @@ class AdminController extends Controller
     $data['LoggedInfo']=AdminModel::where('id','=',session('LoggedUser'))->first();
     return view('admin.include.allExitPermissionsRequests',$data);
     }
+
+    public function  user_data()
+    {
+        $data['LoggedInfo']=AdminModel::where('id','=',session('LoggedUser'))->first();
+        $data['PassUser']=session('PassUser');
+
+        return view('admin.include.changePasswordAdmin',$data);
+    }
+
+
 }

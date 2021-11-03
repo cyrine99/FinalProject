@@ -54,6 +54,8 @@ class MainController extends Controller
           if(Hash::check($request->password,$userInfo->password))
           {
               $request->session()->put('LoggedUser',$userInfo->id);
+              $request->session()->put('PassUser',$request->password);
+
               return redirect('dashboard');
 
           }

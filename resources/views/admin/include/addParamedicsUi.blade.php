@@ -129,6 +129,31 @@
                                                 <option value="8">8</option>
                                                 <option value="9">9</option>
                                                 <option value="10">10</option>
+
+                                                <option value="1">11</option>
+                                                <option value="2">12</option>
+                                                <option value="3">13</option>
+                                                <option value="4">14</option>
+                                                <option value="5">15</option>
+                                                <option value="6">16</option>
+                                                <option value="7">17</option>
+                                                <option value="8">18</option>
+                                                <option value="9">19</option>
+                                                <option value="10">20</option>
+
+
+                                                <option value="1">21</option>
+                                                <option value="2">22</option>
+                                                <option value="3">23</option>
+                                                <option value="4">24</option>
+                                                <option value="5">25</option>
+                                                <option value="6">26</option>
+                                                <option value="7">27</option>
+                                                <option value="8">28</option>
+                                                <option value="9">29</option>
+                                                <option value="10">30</option>
+                                                <option value="10">31</option>
+
                                             </select>
                                             <span class="text-danger">
                                             @error('BD_Day')

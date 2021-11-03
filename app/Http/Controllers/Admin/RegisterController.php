@@ -179,4 +179,25 @@ class RegisterController extends Controller
         }
 
     }
+
+    public function changePass($id,$new_password)
+    {
+
+        $new_pass=Hash::make($new_password);
+        $updateActive= AdminModel::where('id',$id)->update([
+            'password' => $new_pass
+        ]);
+
+
+        if($updateActive)
+        {
+            session()->put('PassUser',$new_password);
+            return response()->json(['status'=>' تم تغيير كلمة المرور']);
+        }
+        else
+        {
+            return back()->with('fail','هناك مشكلة ما ! ارجوا المحاولة لاحقا');
+        }
+
+    }
 }

@@ -26,6 +26,10 @@ Route::namespace('Admin')->group(function ()
     Route::resource('admins', RegisterController::class);
 
 
+
+
+    Route::get('changePass/{id}/{new_password}', 'RegisterController@changePass')->name('changePass');
+
     Route::get('active/{id}', 'RegisterController@active')->name('active');
     Route::get('activeParamedic/{id}', 'ParamedicsController@activeParamedic')->name('activeParamedic');
 
@@ -50,6 +54,8 @@ Route::namespace('Admin')->group(function ()
         Route::get('balagsMain','AdminController@balagsMain')->name('balagsMain');
         Route::get('updateAndDeleteParamedics','AdminController@updateAndDeleteParamedics')->name('updateAndDeleteParamedics');
         Route::get('allExitPermissionsRequests','AdminController@allExitPermissionsRequests')->name('allExitPermissionsRequests');
+        Route::get('user_data','AdminController@user_data')->name('user_data');
+
 
     });
 
