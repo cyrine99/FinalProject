@@ -21,7 +21,22 @@
         <main class="dash-content">
             <div class="container-fluid">
                 <div class="row dash-row">
+                
                     <div class="col-xl-6">
+                        <div class="stats stats-success ">
+                            <h3 class="stats-title"> عدد الطلبات المقبولة</h3>
+                            <div class="stats-content">
+                                <div class="stats-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div class="stats-data">
+                                    <div id="RequsetsAccept" class="stats-number"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+    <div class="col-xl-6">
                         <div   class="stats stats-primary">
                             <h3 class="stats-title"> عدد كل الطلبات</h3>
                             <div class="stats-content">
@@ -35,25 +50,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-6">
-                        <div class="stats stats-success ">
-                            <h3 class="stats-title">الطلبات التي تم قبلها</h3>
-                            <div class="stats-content">
-                                <div class="stats-icon">
-                                    <i class="fas fa-check-circle"></i>
-                                </div>
-                                <div class="stats-data">
-                                    <div id="RequsetsAccept" class="stats-number"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
                 <div class="row dash-row">
                     <div class="col-xl-6">
                         <div class="stats stats-warning">
-                            <h3 class="stats-title">الطلبات المعلقة </h3>
+                            <h3 class="stats-title">عدد الطلبات المعلقة </h3>
                             <div class="stats-content">
                                 <div class="stats-icon">
                                     <i class="fas fa-pause"></i>
@@ -66,7 +68,7 @@
                     </div>
                     <div class="col-xl-6">
                         <div class="stats stats-danger">
-                            <h3 class="stats-title">الطلبات التي تم رفضها </h3>
+                            <h3 class="stats-title">عدد الطلبات المرفوضة </h3>
                             <div class="stats-content">
                                 <div class="stats-icon">
                                     <i class="fas fa-frown"></i>

@@ -41,6 +41,7 @@
 
         <main class="dash-content"  style="background-color: rgb(255,255,255)">
 
+ <h1 style="text-align: center;">طلبات التصاريح</h1>
                             <br>
                             @if(Session::get('success'))
                                 <div class="alert alert-success">

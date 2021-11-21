@@ -41,6 +41,7 @@
 
         <main class="dash-content"  style="background-color: rgb(255,255,255)">
 
+ <h1 style="text-align: center;">التصاريح</h1>
 {{--            <div class="row justify-content-center"  >--}}
 {{--                <div class="col-md-12 col-lg-10"   >--}}
 {{--                    <div class="col-md-12 wrap d-md-flex"  style="background-color: #fff" >--}}

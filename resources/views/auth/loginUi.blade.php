@@ -15,7 +15,7 @@
                     <div class="text-wrap p-4 p-lg-5 text-center d-flex align-items-center order-md-last">
                         <div class="text w-100">
                             <img src="{{URL::asset('images/download.png')}}" alt="الهلال الاحمر الليبي" />
-                            <h2>جمعية الهلال الاحمر الليبي</h2>
+                            <h2>جمعية الهلال الأحمر الليبي</h2>
                         </div>
                     </div>
                     <div class="login-wrap p-4 p-lg-5">

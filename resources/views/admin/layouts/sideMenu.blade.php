@@ -9,7 +9,7 @@
     <nav class="dash-nav-list">
 
         <a href="{{route('dashboard')}}" class="dash-nav-item">
-            <i class="fas fa-home"></i> الرئسية </a>
+            <i class="fas fa-home"></i> الرئيسية </a>
 
         @if($LoggedInfo->userType==1)
             <div class="dash-nav-dropdown">

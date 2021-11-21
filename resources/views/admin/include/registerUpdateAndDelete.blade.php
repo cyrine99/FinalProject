@@ -41,6 +41,7 @@
 
         <main class="dash-content" style="background-color: rgb(255,255,255)">
 
+ <h1 style="text-align: center;">المستخدمون</h1>
 {{--            <div class="row justify-content-center"  >--}}
 {{--                <div class="col-md-12 col-lg-10"   >--}}
 {{--                    <div class="col-md-12 wrap d-md-flex"  style="background-color: #fff" >--}}
@@ -193,8 +194,8 @@
 
                         <select required id="userType" name="userType" class="form-control" aria-label="Default select example" value="{{old('userType')}}">
                             <option value="" style="color:#c1c1c1" selected>نوع المستخدم</option>
-                            <option value="1">مدير نطام</option>
-                            <option value="2">مستخدم نطام</option>
+                            <option value="1">مدير نظام</option>
+                            <option value="2">مستخدم نظام</option>
                         </select>
                         <span class="text-danger">
                                             @error('userType')

@@ -218,7 +218,7 @@
                                 <select required name="BD_Day" id="BD_Day" class="form-control" aria-label="Default select example"
                                         onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
 
-                                    <option value="{{old('BD_Day')}}" style="color:#c1c1c1" selected>إختر اليوم</option>
+                                    <option value="{{old('BD_Day')}}" style="color:#c1c1c1" selected>اختر اليوم</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -241,7 +241,7 @@
                                 <select required name="BD_Month" id="BD_Month" class="form-control" aria-label="Default select example"
                                         onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();' >
 
-                                    <option value="{{old('BD_Month')}}" style="color:#c1c1c1" selected>إختر الشهر</option>
+                                    <option value="{{old('BD_Month')}}" style="color:#c1c1c1" selected>اختر الشهر</option>
                                     <option value="1">يناير</option>
                                     <option value="2">فبراير</option>
                                     <option value="3">مارس</option>
@@ -269,7 +269,7 @@
                                         onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
 
                                     {{--طريقة التعبائة هنا غير صحيحة !!!!!!!!!! لكن سيتم تصحيحها ان شاء الله .. هنا فقط للتجربة--}}
-                                    <option value="{{old('BD_Year')}}" style="color:#c1c1c1" selected>إختر السنة</option>
+                                    <option value="{{old('BD_Year')}}" style="color:#c1c1c1" selected>اختر السنة</option>
                                     <option value="2003">2003</option>
                                     <option value="2002">2002</option>
                                     <option value="2001">2001</option>

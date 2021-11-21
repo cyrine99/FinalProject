@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     @include('Links.head')
-    <title >تسجيل مسعف جديد</title>
+    <title >إضافة مسعف جديد</title>
     {{--Git Hub Test--}}
 </head>
 <body>
@@ -20,7 +20,7 @@
                         <div class="login-wrap p-4 p-lg-5" >
                             <div class="d-flex">
                                 <div class="w-100">
-                                    <h3 class="mb-4">تسجيل مسعف جديد</h3>
+                                    <h3 class="mb-4">إضافة مسعف جديد</h3>
                                 </div>
                             </div>
                             <form  action="{{route('paramedics.store')}}" method="post" class="col-md-12 signin-form">
@@ -117,8 +117,8 @@
                                                     {{--هذه لعمل سكرول للقائمة--}}
                                                     onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
 
-                                                {{--طريقة التعبائة هنا غير صحيحة !!!!!!!!!! لكن سيتم تصحيحها ان شاء الله .. هنا فقط للتجربة--}}
-                                                <option value="{{old('BD_Day')}}" style="color:#c1c1c1" selected>إختر اليوم</option>
+                                           
+                                                <option value="{{old('BD_Day')}}" style="color:#c1c1c1" selected>اختر اليوم</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
                                                 <option value="3">3</option>
@@ -167,7 +167,7 @@
                                                     onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();' >
 
                                                 {{--طريقة التعبائة هنا غير صحيحة !!!!!!!!!! لكن سيتم تصحيحها ان شاء الله .. هنا فقط للتجربة--}}
-                                                <option value="{{old('BD_Month')}}" style="color:#c1c1c1" selected>إختر الشهر</option>
+                                                <option value="{{old('BD_Month')}}" style="color:#c1c1c1" selected>اختر الشهر</option>
                                                 <option value="1">يناير</option>
                                                 <option value="2">فبراير</option>
                                                 <option value="3">مارس</option>
@@ -194,8 +194,8 @@
                                             <select required name="BD_Year" class="form-control" aria-label="Default select example"
                                                     onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
 
-                                                {{--طريقة التعبائة هنا غير صحيحة !!!!!!!!!! لكن سيتم تصحيحها ان شاء الله .. هنا فقط للتجربة--}}
-                                                <option value="{{old('BD_Year')}}" style="color:#c1c1c1" selected>إختر السنة</option>
+                                              
+                                                <option value="{{old('BD_Year')}}" style="color:#c1c1c1" selected>اختر السنة</option>
                                                 <option value="2003">2003</option>
                                                 <option value="2002">2002</option>
                                                 <option value="2001">2001</option>

@@ -59,9 +59,24 @@
                                 </div>
                             @endif
 
+
+			   @if($state_number==1)
+                               <h1 style="text-align: center;">البلاغات النشطة</h1>
+                            @endif
+
+
+  			   @if($state_number==2)
+                               <h1 style="text-align: center;">البلاغات المغلقة</h1>
+                            @endif
+
+
+  			   @if($state_number==0)
+                               <h1 style="text-align: center;">البلاغات المعلقة</h1>
+                            @endif
+
                             @if($state_number==1)
 
-                                <p>المرفوضة</p>
+<br><br>
                                 <table  dir="rtl"  style="text-align: center;" id="datatable" class="table table-hover table-fixed"  >
                                     <thead>
                                     <tr>
@@ -84,7 +99,6 @@
 
                             @if($state_number==2)
 
-                                <p>المرفوضة</p>
                                 <table  dir="rtl"  style="text-align: center;" id="datatable" class="table table-hover table-fixed"  >
                                     <thead>
                                     <tr>
@@ -95,7 +109,7 @@
                                         <th >وقت إغلاق المهمة</th>
                                         <th >الإسعافات</th>
                                         <th >اسم المستشفى</th>
-                                        <th >تفاصيل اخرى</th>
+                                        <th >تفاصيل أخرى</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -118,18 +132,17 @@
 
                             @if($state_number==0)
 
-                                <p>المرفوضة</p>
                                 <table  dir="rtl"  style="text-align: center;" id="datatable" class="table table-hover table-fixed"  >
                                     <thead>
                                     <tr>
                                         <th >No.</th>
-                                        <th >بلاغ بإسم</th>
+                                        <th >بلاغ باسم</th>
                                         <th >نوع البلاغ</th>
                                         <th >وصف الموقع</th>
                                         <th >عدد الأشخاص</th>
                                         <th >رقم الهاتف</th>
                                         <th >وقت طلب البلاغ</th>
-                                        <th >تفاصيل اخرى</th>
+                                        <th >تفاصيل أخرى</th>
                                     </tr>
                                     </thead>
                                     <tbody>

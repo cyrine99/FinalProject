@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 @include('Links.head')
-    <title >تسجيل مستخدم جديد</title>
+    <title >إضافة مستخدم جديد</title>
 </head>
 <body>
 <div class="dash">
@@ -19,7 +19,7 @@
                             <div class="login-wrap p-4 p-lg-5" >
                                 <div class="d-flex">
                                     <div class="w-100">
-                                        <h3 class="mb-4">تسجيل مستخدم جديد</h3>
+                                        <h3 class="mb-4">إضافة مستخدم جديد</h3>
                                     </div>
                                 </div>
                                 <form  action="{{route('admins.store')}}" method="post" class="col-md-12 signin-form">
@@ -82,8 +82,8 @@
 
                                         <select name="userType" class="form-control" aria-label="Default select example" >
                                             <option value="{{old('userType')}}" style="color:#c1c1c1" selected>نوع المستخدم</option>
-                                            <option value="1">مدير نطام</option>
-                                            <option value="2">مستخدم نطام</option>
+                                            <option value="1">مدير نظام</option>
+                                            <option value="2">مستخدم نظام</option>
                                         </select>
                                         <span class="text-danger">
                                             @error('userType')

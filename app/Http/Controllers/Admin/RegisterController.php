@@ -25,6 +25,8 @@ class RegisterController extends Controller
 
     public function store(Request $request,AdminModel $admin)
     {
+
+
         $request->validate(
             [
                 'firstname'=>'required|max:15',//و تحقق ان الاسم مش مكرر في الجدول
@@ -48,6 +50,13 @@ class RegisterController extends Controller
 
         if($save)
         {
+            /*$details=[
+                'title'=>'بيانات دخولك للنظام',
+                'body'=>'اسم المستخدم : '.$request->firstname
+            ];
+
+            Mail::to($request->email)->send(new TestMail($details));*/
+
             return back()->with('success','تم إضافة المستخدم بنجاح');
         }
         else

@@ -11,8 +11,8 @@
                 <i class="fas fa-user"></i>
             </a>
             <div style="text-align: right" class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-                <a class="dropdown-item" href="{{route('user_data')}}">ملف الشخصي</a>
-                <a class="dropdown-item" href="{{route('logout')}}">خروج</a>
+                <a class="dropdown-item" href="{{route('user_data')}}">الملف الشخصي</a>
+                <a class="dropdown-item" href="{{route('logout')}}">تسجيل الخروج</a>
             </div>
         </div>
 
@@ -28,7 +28,7 @@
     </div>
 
     <h5 class="col-md-10" style="text-align: center">
-      جمعية الهلال الاحمر الليبي
+      جمعية الهلال الأحمر الليبي
     </h5>
 
     <a href="#!" class="menu-toggle">
@@ -135,7 +135,7 @@
 <script>
     jQuery(document).ready(function($){
 
-	var localUrl='http://192.168.1.3:8080';
+	var localUrl='http://127.0.0.1:8000';
 
         $('#notify-comet').on('click', function()
         {
