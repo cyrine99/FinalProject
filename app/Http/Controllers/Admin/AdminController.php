@@ -25,7 +25,6 @@ class AdminController extends Controller
 
     public function dashboard()
     {
-
         $data['LoggedInfo']=AdminModel::where('id','=',session('LoggedUser'))->first();
         return view('admin.include.dashboard',$data);
     }

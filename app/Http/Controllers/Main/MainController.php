@@ -55,9 +55,7 @@ class MainController extends Controller
           {
               $request->session()->put('LoggedUser',$userInfo->id);
               $request->session()->put('PassUser',$request->password);
-
               return redirect('dashboard');
-
           }
           else
           {

@@ -22,30 +22,50 @@ class ParamedicBalagController extends Controller
 
     public function store(Request $request)
     {
-        if($request->balag_state==1)
+		 $user_id=$request->paramedic_id;
+
+		 $user_state=Paramedics::where('id','=',$user_id)->first();
+			
+		if($user_state->paramedic_state==1)
         {
-         Balag::where('id',$request->balag_id)->update(['balag_state' => 1]);
+				 if($request->balag_state==1)
+				{
+				 Balag::where('id',$request->balag_id)->update(['balag_state' => 1]);
+				}
+
+
+				$store=ParamedicBalag::create($request->all());
+
+				if($store) 
+				{
+					return response()->json($store,200);
+				}
+				else
+				{
+					return response()->json('Error',400);
+				}
         }
-
-
-        $store=ParamedicBalag::create($request->all());
-
-        if($store) {
-            return response()->json($store,200);
-        }
-        else
+		 else
         {
-            return response()->json('Error',400);
+          return response()->json('Error',500);
         }
+		
+		
+       
     }
 
 
 
 
     public function BalagUpdate(Request $request)
-
     {
-        $update= ParamedicBalag::where('id',$request->id)->update([
+
+		 $user_id=$request->paramedic_id;
+		 $user_state=Paramedics::where('id','=',$user_id)->first();
+		
+		if($user_state->paramedic_state==1)
+        {
+			$update= ParamedicBalag::where('id',$request->id)->update([
             'balag_state' => 2,
             'time_access_location'=>$request->time_access_location,
             'relief_details'=>$request->relief_details,
@@ -67,6 +87,13 @@ class ParamedicBalagController extends Controller
             return response()->json('Error',400);
         }
 
+		}
+		else
+		{
+			return response()->json('Error',500);
+		}
+		
+        
     }
 
 
