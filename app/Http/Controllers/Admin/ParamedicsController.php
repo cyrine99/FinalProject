@@ -58,9 +58,7 @@ class ParamedicsController extends Controller
             $paramedic->lastname=$request->lastname;
             $paramedic->phone=$request->phone;
             $paramedic->email=$request->email;
-            $paramedic->BD_Day=$request->BD_Day;
-            $paramedic->BD_Month=$request->BD_Month;
-            $paramedic->BD_Year=$request->BD_Year;
+            $paramedic->birth_date=''.$request->BD_Year.'-'.$request->BD_Month.'-'.$request->BD_Day.'';
             $paramedic->IDnumber=$request->IDnumber;
             $paramedic->username=$request->username;
             $paramedic->password=Hash::make($request->password);
@@ -70,9 +68,8 @@ class ParamedicsController extends Controller
 
             if($paramedic->save())
             {
-              //  Mail::to($request->email)->send(new TestMail($details));
 
-                return back()->with('success','تم تسجيل المسعف بنجاح');
+               return back()->with('success','تم تسجيل المسعف بنجاح');
 
             }
 
@@ -140,9 +137,7 @@ class ParamedicsController extends Controller
             $paramedic->lastname = $request->lastname;
             $paramedic->phone = $request->phone;
             $paramedic->email = $request->email;
-            $paramedic->BD_Day = $request->BD_Day;
-            $paramedic->BD_Month = $request->BD_Month;
-            $paramedic->BD_Year = $request->BD_Year;
+            $paramedic->birth_date=$request->birth_date;
             $paramedic->IDnumber = $request->IDnumber;
 
             $update = $paramedic->save();

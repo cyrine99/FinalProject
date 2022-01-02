@@ -117,7 +117,7 @@
                                                     {{--هذه لعمل سكرول للقائمة--}}
                                                     onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
 
-                                           
+
                                                 <option value="{{old('BD_Day')}}" style="color:#c1c1c1" selected>اختر اليوم</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
@@ -194,7 +194,7 @@
                                             <select required name="BD_Year" class="form-control" aria-label="Default select example"
                                                     onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
 
-                                              
+
                                                 <option value="{{old('BD_Year')}}" style="color:#c1c1c1" selected>اختر السنة</option>
                                                 <option value="2003">2003</option>
                                                 <option value="2002">2002</option>

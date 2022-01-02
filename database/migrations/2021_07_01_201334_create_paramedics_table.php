@@ -21,9 +21,7 @@ class CreateParamedicsTable extends Migration
             $table->string('lastname');
             $table->string('phone');
             $table->string('email');
-            $table->integer('BD_Day');
-            $table->integer('BD_Month');
-            $table->integer('BD_Year');
+            $table->date('birth_date');
             $table->string('IDnumber');
             $table->string('username');
             $table->string('password');
