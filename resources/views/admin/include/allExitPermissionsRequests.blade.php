@@ -58,8 +58,8 @@
                                 <thead>
                                 <tr>
                                     <th >No.</th>
-                                    <th >اسم السائق</th>
-                                    <th >رقم الهاتف</th>
+                                    <th >الحالة</th>
+                                    <th >عنوان المنزل</th>
                                     <th >اسم المستشفى</th>
                                     <th >وقت طلب التصريح</th>
                                     <th >عرض</th>
@@ -74,8 +74,8 @@
                                     @endif
 
                                         <td >{{$value->id}}</td>
-                                        <td >{{$value->driver_name}}</td>
-                                        <td >{{$value->driver_phone}}</td>
+                                        <td >{{$value->state_details}}</td>
+                                        <td >{{$value->home_address}}</td>
                                         <td >{{$value->hospital_name}}</td>
                                         <td >{{$value->created_at}}</td>
                                         <td >

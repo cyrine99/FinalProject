@@ -63,8 +63,8 @@
                                 <thead>
                                 <tr>
                                     <th >No.</th>
-                                    <th >اسم السائق</th>
-                                    <th >رقم الهاتف</th>
+                                    <th >الحالة</th>
+                                    <th >عنوان المنزل</th>
                                     <th >اسم المستشفى</th>
                                     <th >وقت طلب التصريح</th>
                                     <th >عرض</th>
@@ -82,11 +82,11 @@
                                     @if($value->request_state==-1)
                                         <tr style="background-color: rgba(250,123,123,0.25)">
                                     @endif
-                                        <td >{{$value->id}}</td>
-                                        <td >{{$value->driver_name}}</td>
-                                        <td >{{$value->driver_phone}}</td>
-                                        <td >{{$value->hospital_name}}</td>
-                                        <td >{{$value->created_at}}</td>
+                                            <td >{{$value->id}}</td>
+                                            <td >{{$value->state_details}}</td>
+                                            <td >{{$value->home_address}}</td>
+                                            <td >{{$value->hospital_name}}</td>
+                                            <td >{{$value->created_at}}</td>
                                         <td >
                                             <a href="{{url('/exitPermissionShow/'.$value->id.'/'.$value->request_state)}}" class="btn btn-info">التفاصيل</a>
                                         </td>

@@ -48,89 +48,93 @@
                                                 </div>
                                             @endif
 
-                                            <h2 style="background-color: #dafadd"  >تفاصيل الحالة</h2>
-                                            <h3> {{$permissionData->state_details}}</h3>
-                                                <br>
-                                                <br>
-                                            <h2 style="background-color: #dafadd" >الاسم بالكامل</h2>
-                                            <h3> {{$permissionData->driver_name}}</h3>
-                                                <br>
-                                                <br>
+                                    @foreach($permissionData as $value)
+                                        <h2 style="background-color: #dafadd"  >تفاصيل الحالة</h2>
+                                        <h3> {{$value->state_details}}</h3>
+                                        <br>
+                                        <br>
+                                        <h2 style="background-color: #dafadd" >الاسم بالكامل</h2>
+                                        <h3> {{$value->driver_name}}</h3>
+                                        <br>
+                                        <br>
 
-                                                <h2 style="background-color: #dafadd" >رقم الهوية</h2>
-                                            <h3> {{$permissionData->driver_id}}</h3>
+                                        <h2 style="background-color: #dafadd" >رقم الهوية</h2>
+                                        <h3> {{$value->driver_id}}</h3>
+                                        <br>
+                                        <br>
+
+                                        <h2 style="background-color: #dafadd" >رقم الهاتف</h2>
+                                        <h3> {{$value->driver_phone}}</h3>
+                                        <br>
+                                        <br>
+
+                                        <h2 style="background-color: #dafadd">رقم لوحة السيارة</h2>
+                                        <h3> {{$value->car_bord_number}}</h3>
+
+                                        <br>
+                                        <br>
+
+                                        <h2 style="background-color: #dafadd" >عنوان المنزل</h2>
+                                        <h3> {{$value->home_address}}</h3>
+                                        <br>
+                                        <br>
+
+                                        <h2 style="background-color: #dafadd" >المستشفى</h2>
+                                        <h3> {{$value->hospital_name}}</h3>
+                                        <br>
+                                        <br>
+
+                                        <h2 style="background-color: #dafadd" >وقت طلب التصريح</h2>
+                                        <h3> {{$value->created_at}}</h3>
+                                        <br>
+                                        <br>
+
+                                        <br>
+                                        <br>
+
+                                        @if($value->request_state ==0)
+
+                                            <a href="{{ url('/OkRequest/'.$value->id.'/'.$value->patient_id.'/'.$LoggedInfo->id ) }}"  class="btn btn-success"><i style="margin: 10px" class="fas fa-check-circle"></i>قبول</a>
+                                            <a href="{{ url('/CancelRequest/'.$value->id.'/'.$value->patient_id.'/'.$LoggedInfo->id ) }}" class="btn btn-danger"><i style="margin: 10px" class="fas fa-frown"></i>رفض</a>
+
+                                        @endif
+
+                                        @if($value->request_state ==1)
+                                            <h1  style="text-align: center;color: #adb5bd">
+                                                تم الرد على هذا التصريح  من المستخدم
                                                 <br>
-                                                <br>
-
-                                                <h2 style="background-color: #dafadd" >رقم الهاتف</h2>
-                                            <h3> {{$permissionData->driver_phone}}</h3>
-                                                <br>
-                                                <br>
-
-                                                <h2 style="background-color: #dafadd">رقم لوحة السيارة</h2>
-                                            <h3> {{$permissionData->car_bord_number}}</h3>
-
-                                                <br>
-                                                <br>
-
-                                                <h2 style="background-color: #dafadd" >عنوان المنزل</h2>
-                                            <h3> {{$permissionData->home_address}}</h3>
-                                                <br>
-                                                <br>
-
-                                                <h2 style="background-color: #dafadd" >المستشفى</h2>
-                                            <h3> {{$permissionData->hospital_name}}</h3>
-                                                <br>
-                                                <br>
-
-                                                <h2 style="background-color: #dafadd" >وقت طلب التصريح</h2>
-                                            <h3> {{$permissionData->created_at}}</h3>
-                                                <br>
-                                                <br>
-
-                                                <br>
-                                                <br>
-
-                                                @if($permissionData->request_state ==0)
-
-                                                        <a href="{{ url('/OkRequest/'.$permissionData->id.'/'.$permissionData->patient_id.'/'.$LoggedInfo->id ) }}"  class="btn btn-success"><i style="margin: 10px" class="fas fa-check-circle"></i>قبول</a>
-                                                        <a href="{{ url('/CancelRequest/'.$permissionData->id.'/'.$permissionData->patient_id.'/'.$LoggedInfo->id ) }}" class="btn btn-danger"><i style="margin: 10px" class="fas fa-frown"></i>رفض</a>
-
-                                                @endif
-
-                                                @if($permissionData->request_state ==1)
-                                                        <h1  style="text-align: center;color: #adb5bd">
-                                                            تم الرد على هذا التصريح  من المستخدم
-                                                            <br>
-                                                            <h1 style="color: #218838">
-                                                                <i style="margin: 10px" class="fas fa-check-circle"></i> {{$admin_name}}
-                                                            </h1>
-
-                                                        </h1>
-                                                        <br>
-                                                        <br>
-                                                    @if($stamp=='off')
-                                                    <h1 style="color: #dc3545">التصريح منتهي الصلاحية</h1>
-                                                    @endif
-
-                                                    @if($stamp=='on')
-                                                        <h1 style="color: #87aa2a">التصريح قائم </h1>
-                                                    @endif
-                                    @endif
-
-
-                                            @if($permissionData->request_state ==-1)
-                                                <h1  style="text-align: center;color: #adb5bd">
-                                                    تم الرد على هذا التصريح  من المستخدم
-                                                    <br>
-                                                    <h1 style="color: #e2323a">
-                                                        <i style="margin: 10px" class="fas fa-frown"></i> {{$admin_name}}
-                                                    </h1>
-
+                                                <h1 style="color: #218838">
+                                                    <i style="margin: 10px" class="fas fa-check-circle"></i> {{$admin_name}}
                                                 </h1>
-                                                <br>
-                                                <br>
+
+                                            </h1>
+                                            <br>
+                                            <br>
+                                            @if($stamp=='off')
+                                                <h1 style="color: #dc3545">التصريح منتهي الصلاحية</h1>
                                             @endif
+
+                                            @if($stamp=='on')
+                                                <h1 style="color: #87aa2a">التصريح قائم </h1>
+                                            @endif
+                                        @endif
+
+
+                                        @if($value->request_state ==-1)
+                                            <h1  style="text-align: center;color: #adb5bd">
+                                                تم الرد على هذا التصريح  من المستخدم
+                                                <br>
+                                                <h1 style="color: #e2323a">
+                                                    <i style="margin: 10px" class="fas fa-frown"></i> {{$admin_name}}
+                                                </h1>
+
+                                            </h1>
+                                            <br>
+                                            <br>
+                                        @endif
+                                    @endforeach
+
+
 
 
 

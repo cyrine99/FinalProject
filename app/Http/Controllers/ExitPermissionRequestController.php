@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AdminModel;
+use App\Models\Driver;
 use App\Models\ExitPermissionRequert;
 use App\Models\LoginPatient;
 use Illuminate\Http\Request;
@@ -173,7 +174,7 @@ class ExitPermissionRequestController extends Controller
 
     }
 
-    public function store(Request $request)
+    public function store(Request $request,ExitPermissionRequert $exitPermissionRequert, Driver  $driver)
     {
 
         $request->validate([
@@ -188,14 +189,38 @@ class ExitPermissionRequestController extends Controller
             'date_time_request'=>'required',
         ]);
 
-        $store=ExitPermissionRequert::create($request->all());
+        $driver->driver_name=$request->driver_name;
+        $driver->driver_id=$request->driver_id;
+        $driver->driver_phone=$request->driver_phone;
+        $driver->car_bord_number=$request->car_bord_number;
+        $save=$driver->save();
 
-        if($store) {
-            return response()->json($store,200);
+        //$store=ExitPermissionRequert::create($request->all());
+
+        if($save)
+        {
+            $exitPermissionRequert->driver_id=$driver->id;
+            $exitPermissionRequert->patient_id=$request->patient_id;
+            $exitPermissionRequert->state_details=$request->state_details;
+            $exitPermissionRequert->home_address=$request->home_address;
+            $exitPermissionRequert->hospital_name=$request->hospital_name;
+            $exitPermissionRequert->date_time_request=$request->date_time_request;
+            $exitPermissionRequert->request_state=$request->request_state;
+            $saveDone=$exitPermissionRequert->save();
+
+            if($saveDone)
+            {
+                return response()->json('doneAll',200);
+            }
+            else
+            {
+                return response()->json('ExitNot',200);
+            }
+
         }
         else
         {
-            return response()->json('Error',400);
+            return response()->json('DriverError',400);
         }
 
     }
@@ -203,7 +228,7 @@ class ExitPermissionRequestController extends Controller
 
     public function show($id,$state)
     {
-        $data['permissionData']= ExitPermissionRequert::find($id);
+
 
         if($state==1 || $state==-1)
         {
@@ -238,6 +263,19 @@ class ExitPermissionRequestController extends Controller
                 $data['admin_name']=$value->firstname."  ".$value->lastname;
             }
         }
+
+        $data['permissionData'] = DB::select(' SELECT
+        drivers.driver_name,
+        drivers.driver_id ,
+        drivers.driver_phone ,
+        drivers.car_bord_number ,
+        exit_permission_requerts.state_details,
+        exit_permission_requerts.home_address,
+        exit_permission_requerts.hospital_name,
+        exit_permission_requerts.created_at,
+        exit_permission_requerts.request_state,
+        exit_permission_requerts.id ,
+        exit_permission_requerts.patient_id FROM exit_permission_requerts,drivers WHERE exit_permission_requerts.id='.$id.'  and  drivers.id=exit_permission_requerts.driver_id ');
 
         $data['LoggedInfo']=AdminModel::where('id','=',session('LoggedUser'))->first();
         $data['AllUsers']=AdminModel::all();
